@@ -1,0 +1,679 @@
+/* =====================================
+   GLOBAL
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+body{
+
+    background:#f1f3f6;
+
+    color:#212121;
+
+}
+/* =====================================
+   REMOVE SALE RIBBON ONLY ON CHECKOUT
+===================================== */
+
+.checkout-container .card::before,
+.checkout-container .card::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+
+.navbar{
+
+    height:70px;
+
+    background:#2874f0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    color:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+
+
+.logo{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+}
+
+
+
+.search-box{
+
+    display:flex;
+
+    width:40%;
+
+}
+
+
+
+.search-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:4px 0 0 4px;
+
+}
+
+
+
+.search-box button{
+
+    width:90px;
+
+    border:none;
+
+    background:#fb641b;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+
+.nav-links{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+
+/* =====================================
+   CHECKOUT CONTAINER
+===================================== */
+
+
+.checkout-container{
+
+
+    width:90%;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+
+}
+
+
+
+.checkout-left,
+.checkout-right{
+
+    width:100%;
+
+}
+
+
+
+
+
+/* =====================================
+   CARD
+===================================== */
+
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:8px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.12);
+
+}
+
+
+
+.card h2{
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+    color:#333;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+ ADDRESS
+===================================== */
+
+
+.address-item{
+
+
+    border:1px solid #ddd;
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.address-item:hover{
+
+    border-color:#2874f0;
+
+    background:#f5faff;
+
+}
+
+
+
+.address-item input{
+
+    margin-right:10px;
+
+}
+
+
+
+
+
+.address-item p{
+
+    margin-top:6px;
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+
+.add-address-btn{
+
+
+    margin-top:15px;
+
+    padding:12px 20px;
+
+    background:#2874f0;
+
+    color:white;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+
+
+.add-address-btn:hover{
+
+    background:#1558c0;
+
+}
+
+
+
+
+
+
+/* =========================
+   CHECKOUT PRODUCTS UPDATED
+========================= */
+
+#cartItems{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+.checkout-product{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px;
+
+    background:#fff;
+
+    border-bottom:1px solid #ddd;
+
+    border-radius:8px;
+
+}
+
+
+
+.checkout-product:last-child{
+
+    border-bottom:none;
+
+}
+
+
+
+/* PRODUCT IMAGE */
+
+.checkout-product img{
+
+    width:110px;
+
+    height:110px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    padding:5px;
+
+}
+
+
+
+/* PRODUCT DETAILS */
+
+.checkout-product-info{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+
+.checkout-product-info h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+    color:#212121;
+
+}
+
+
+
+.checkout-product-info p{
+
+    margin:5px 0;
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+
+.checkout-product-info b{
+
+    margin-top:8px;
+
+    font-size:16px;
+
+    color:#111;
+
+}
+
+/* =====================================
+ PAYMENT
+===================================== */
+
+
+.payment-option{
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+.payment-option input{
+
+
+    margin-right:10px;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+ PRICE DETAILS
+===================================== */
+
+
+
+.price-card{
+
+    position:sticky;
+
+    top:50px;
+
+}
+
+
+
+
+.price-row{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:15px 0;
+
+    font-size:16px;
+
+}
+
+
+
+.total-row{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+}
+
+
+
+
+
+
+.place-order-btn{
+
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:15px;
+
+    background:#fb641b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:5px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+
+}
+
+
+
+.place-order-btn:hover{
+
+
+    background:#e85b16;
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+ FOOTER
+===================================== */
+
+
+footer{
+
+
+    background:#172337;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:40px;
+
+}
+
+
+
+
+
+
+/* =====================================
+ RESPONSIVE
+===================================== */
+
+
+@media(max-width:900px){
+
+
+
+.checkout-container{
+
+
+    grid-template-columns:1fr;
+
+    width:95%;
+
+
+}
+
+
+
+.navbar{
+
+
+    flex-wrap:wrap;
+
+    height:auto;
+
+    padding:15px;
+
+    gap:15px;
+
+}
+
+
+
+.search-box{
+
+    width:100%;
+
+}
+
+
+
+.checkout-right{
+
+
+    order:-1;
+
+}
+
+
+
+.price-card{
+
+
+    position:relative;
+
+}
+
+
+}
+
+
+@media(max-width:600px){
+
+
+.checkout-product{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    padding:12px;
+
+    gap:12px;
+
+}
+
+
+
+.checkout-product img{
+
+    width:80px;
+
+    height:80px;
+
+}
+
+
+
+.checkout-product-info h3{
+
+    font-size:16px;
+
+}
+
+
+
+.checkout-product-info p{
+
+    font-size:13px;
+
+}
+
+
+}

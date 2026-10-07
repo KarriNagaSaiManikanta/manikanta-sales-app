@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Return Orders | Manikanta Sales</title>
+
+
+    <!-- ADMIN NAVBAR CSS -->
+    <link
+        rel="stylesheet"
+        href="css/admin-navbar.css"
+    >
+
+    <!-- RETURN ORDERS CSS -->
+    <link
+        rel="stylesheet"
+        href="css/admin-return-orders.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- ADMIN NAVBAR -->
+    <!-- ================================= -->
+
+    <div id="adminNavbar"></div>
+
+
+    <!-- ================================= -->
+    <!-- MAIN CONTAINER -->
+    <!-- ================================= -->
+
+    <main class="return-orders-container">
+
+
+        <!-- ================================= -->
+        <!-- PAGE HEADER -->
+        <!-- ================================= -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    ADMIN MANAGEMENT
+                </span>
+
+                <h1>
+                    Return Orders
+                </h1>
+
+                <p>
+                    Manage customer return requests
+                    and refund orders.
+                </p>
+
+            </div>
+
+
+            <div class="return-summary">
+
+                <div class="summary-card">
+
+                    <span>
+                        Pending Returns
+                    </span>
+
+                    <strong id="pendingReturns">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Approved
+                    </span>
+
+                    <strong id="approvedReturns">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <strong id="completedReturns">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- FILTER -->
+        <!-- ================================= -->
+
+        <div class="return-filter">
+
+            <button
+                class="filter-btn active"
+                data-status="ALL"
+                onclick="filterReturns('ALL')"
+            >
+                All
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="REQUESTED"
+                onclick="filterReturns('REQUESTED')"
+            >
+                Requested
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="APPROVED"
+                onclick="filterReturns('APPROVED')"
+            >
+                Approved
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="REJECTED"
+                onclick="filterReturns('REJECTED')"
+            >
+                Rejected
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="RETURNED"
+                onclick="filterReturns('RETURNED')"
+            >
+                Returned
+            </button>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- RETURN ORDERS -->
+        <!-- ================================= -->
+
+        <section
+            id="returnOrdersContainer"
+            class="return-orders-grid"
+        >
+
+            <div class="loading-box">
+
+                <div class="loader"></div>
+
+                <p>
+                    Loading return orders...
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- ADMIN NAVBAR JS -->
+    <!-- ================================= -->
+
+    <script src="js/admin-navbar.js"></script>
+
+
+    <!-- ================================= -->
+    <!-- RETURN ORDERS JS -->
+    <!-- ================================= -->
+
+    <script src="js/admin-return-orders.js"></script>
+
+<script src="../js/admin-auth.js"></script>
+</body>
+
+</html>

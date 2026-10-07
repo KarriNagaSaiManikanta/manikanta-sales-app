@@ -1,0 +1,420 @@
+/* =====================================
+   GLOBAL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.return-orders-container {
+    width: calc(100% - 280px);
+    margin-left: 280px;
+    padding: 35px;
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   PAGE HEADER
+===================================== */
+
+.page-header {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.page-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1px;
+}
+
+.page-header h1 {
+    margin-top: 7px;
+    font-size: 30px;
+    color: #111827;
+}
+
+.page-header p {
+    margin-top: 7px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.return-summary {
+    display: flex;
+    gap: 12px;
+}
+
+.summary-card {
+    min-width: 145px;
+    padding: 16px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fafafa;
+}
+
+.summary-card span {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 7px;
+}
+
+.summary-card strong {
+    font-size: 24px;
+    color: #111827;
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+.return-filter {
+    display: flex;
+    gap: 10px;
+    background: #ffffff;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 15px rgba(15, 23, 42, 0.05);
+}
+
+.filter-btn {
+    border: none;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filter-btn:hover {
+    background: #e2e8f0;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+
+/* =====================================
+   GRID
+===================================== */
+
+.return-orders-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(420px, 1fr));
+    gap: 20px;
+}
+
+
+/* =====================================
+   RETURN CARD
+===================================== */
+
+.return-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.07);
+    border: 1px solid #e5e7eb;
+}
+
+.return-card:hover {
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =====================================
+   CARD HEADER
+===================================== */
+
+.return-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.return-card-header h2 {
+    font-size: 19px;
+    color: #111827;
+}
+
+
+/* =====================================
+   STATUS
+===================================== */
+
+.return-status {
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.return-status.requested {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.return-status.approved {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.return-status.rejected {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.return-status.returned {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+
+/* =====================================
+   CUSTOMER INFO
+===================================== */
+
+.customer-info {
+    padding: 18px 0;
+}
+
+.customer-info h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 5px 0;
+    font-size: 13px;
+}
+
+.info-row span:first-child {
+    color: #6b7280;
+}
+
+.info-row span:last-child {
+    font-weight: 600;
+    color: #111827;
+    text-align: right;
+}
+
+
+/* =====================================
+   RETURN REASON
+===================================== */
+
+.return-reason {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 5px 0 18px;
+}
+
+.return-reason strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.return-reason p {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+
+/* =====================================
+   ACTIONS
+===================================== */
+
+.return-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.return-actions button {
+    flex: 1;
+    border: none;
+    padding: 11px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+
+/* APPROVE */
+
+.approve-btn {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.approve-btn:hover {
+    background: #15803d;
+}
+
+
+/* REJECT */
+
+.reject-btn {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.reject-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* COMPLETE */
+
+.complete-btn {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.complete-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =====================================
+   LOADING
+===================================== */
+
+.loading-box,
+.empty-box,
+.error-box {
+    grid-column: 1 / -1;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.loading-box p {
+    margin-top: 12px;
+    color: #64748b;
+}
+
+.loader {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    border: 4px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .return-orders-container {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .return-summary {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .return-orders-container {
+        padding: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .return-summary {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        width: 100%;
+    }
+
+    .return-filter {
+        overflow-x: auto;
+    }
+
+    .filter-btn {
+        white-space: nowrap;
+    }
+
+    .return-orders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .return-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}

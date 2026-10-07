@@ -1,0 +1,409 @@
+/* =====================================
+   WISHLIST PAGE
+===================================== */
+
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+
+body{
+
+    background:#f5f5f5;
+
+    color:#222;
+
+}
+
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
+
+#wishlistContainer{
+
+
+    width:90%;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   WISHLIST CARD
+===================================== */
+
+
+.wishlist-card{
+
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:
+
+    0 3px 12px rgba(0,0,0,0.12);
+
+
+    transition:0.3s ease;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+}
+
+
+
+
+.wishlist-card:hover{
+
+
+    transform:translateY(-6px);
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,0.18);
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   PRODUCT IMAGE
+===================================== */
+
+
+.wishlist-card img{
+
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:contain;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   PRODUCT NAME
+===================================== */
+
+
+.wishlist-card h3{
+
+
+    font-size:20px;
+
+    margin:10px 0;
+
+    color:#222;
+
+
+}
+
+
+
+
+
+/* BRAND */
+
+
+.wishlist-card p{
+
+
+    font-size:14px;
+
+    color:#666;
+
+    margin:8px 0;
+
+
+}
+
+
+
+
+
+
+
+/* PRICE */
+
+
+.wishlist-card h2{
+
+
+    color:#2874f0;
+
+    font-size:22px;
+
+    margin:12px 0;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   BUTTON AREA
+===================================== */
+
+
+.wishlist-card button{
+
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+
+    border:none;
+
+    border-radius:8px;
+
+
+    font-size:15px;
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   ADD CART BUTTON
+===================================== */
+
+
+.wishlist-card button:first-of-type{
+
+
+    background:#ff9f00;
+
+    color:white;
+
+
+}
+
+
+
+.wishlist-card button:first-of-type:hover{
+
+
+    background:#fb641b;
+
+    transform:scale(1.03);
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   REMOVE BUTTON
+===================================== */
+
+
+.wishlist-card button:last-of-type{
+
+
+    background:#e53935;
+
+    color:white;
+
+
+}
+
+
+
+
+.wishlist-card button:last-of-type:hover{
+
+
+    background:#c62828;
+
+    transform:scale(1.03);
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   EMPTY WISHLIST
+===================================== */
+
+
+.empty-wishlist{
+
+
+    text-align:center;
+
+    padding:80px;
+
+    font-size:25px;
+
+    color:#777;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+
+@media(max-width:768px){
+
+
+    #wishlistContainer{
+
+
+        width:95%;
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+        gap:15px;
+
+
+    }
+
+
+
+    .wishlist-card{
+
+
+        padding:15px;
+
+
+    }
+
+
+
+    .wishlist-card img{
+
+
+        height:160px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:480px){
+
+
+    #wishlistContainer{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+
+    .wishlist-card h3{
+
+
+        font-size:18px;
+
+
+    }
+
+
+
+    .wishlist-card h2{
+
+
+        font-size:20px;
+
+
+    }
+
+
+}

@@ -1,0 +1,2619 @@
+@import url("navbar.css");
+@import url("hero.css");
+@import url("category.css");
+@import url("product.css");
+@import url("auth.css");
+@import url("cart.css");
+@import url("profile.css");
+@import url("footer.css");
+@import url("responsive.css");
+/*====================================================
+            NAVBAR - PART 1
+====================================================*/
+
+:root{
+
+    --primary:#2874f0;
+    --primary-dark:#1565c0;
+    --secondary:#fb641b;
+    --white:#ffffff;
+    --black:#212121;
+    --gray:#666;
+    --light:#f5f5f5;
+    --border:#e5e5e5;
+    --shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+/*==================================
+            RESET
+==================================*/
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+    background:#fafafa;
+    color:#222;
+
+}
+
+a{
+
+    text-decoration:none;
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+}
+
+/*==================================
+            NAVBAR
+==================================*/
+
+.navbar{
+
+    width:100%;
+    background:#fff;
+    box-shadow:var(--shadow);
+    z-index:999;
+
+}
+
+.navbar-container{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    height:72px;
+
+}
+
+/*==================================
+            LOGO
+==================================*/
+
+.logo{
+
+    flex:0 0 auto;
+
+}
+
+.logo a{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:28px;
+    font-weight:700;
+    color:var(--primary);
+
+}
+
+.logo span{
+
+    color:#222;
+
+}
+
+/*==================================
+            SEARCH
+==================================*/
+
+.search-box{
+
+    flex:1;
+    display:flex;
+    align-items:center;
+    max-width:600px;
+    background:#f3f3f3;
+    border-radius:8px;
+    overflow:hidden;
+
+}
+
+.search-box input{
+
+    width:100%;
+    height:46px;
+    border:none;
+    outline:none;
+    padding:0 15px;
+    font-size:15px;
+    background:transparent;
+
+}
+
+.search-box button{
+
+    width:55px;
+    height:46px;
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*==================================
+            RIGHT MENU
+==================================*/
+
+.right-menu{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+}
+
+/*==================================
+        LOGIN BUTTON
+==================================*/
+
+.login-btn{
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:10px 18px;
+    border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*==================================
+        REGISTER
+==================================*/
+
+.register-btn{
+
+    padding:10px 18px;
+    border:1px solid var(--primary);
+    border-radius:6px;
+    color:var(--primary);
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.register-btn:hover{
+
+    background:var(--primary);
+    color:#fff;
+
+}
+
+/*==================================
+            ICON LINKS
+==================================*/
+
+.icon-link{
+
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f5f5f5;
+    position:relative;
+    transition:.3s;
+
+}
+
+.icon-link:hover{
+
+    background:var(--primary);
+    color:#fff;
+    transform:translateY(-2px);
+
+}
+
+.icon-link .material-icons{
+
+    font-size:25px;
+
+}
+
+/*==================================
+            BADGES
+==================================*/
+
+.badge{
+
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    width:22px;
+    height:22px;
+    background:red;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:700;
+
+}
+
+/*==================================
+        MOBILE BUTTON
+==================================*/
+
+.mobile-menu-btn{
+
+    display:none;
+    border:none;
+    background:none;
+    cursor:pointer;
+
+}
+
+.mobile-menu-btn .material-icons{
+
+    font-size:34px;
+
+}
+
+/*==================================
+        MENU BAR
+==================================*/
+
+.menu-bar{
+
+    background:var(--primary);
+
+}
+
+.menu-list{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    height:55px;
+
+}
+
+.menu-list a{
+
+    color:#fff;
+    font-weight:500;
+    transition:.3s;
+    position:relative;
+
+}
+
+.menu-list a:hover{
+
+    color:#ffeb3b;
+
+}
+
+.menu-list a.active{
+
+    color:#ffeb3b;
+
+}
+
+.menu-list a.active::after{
+
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:#ffeb3b;
+
+}
+/*====================================================
+            NAVBAR CSS - PART 2
+====================================================*/
+
+/*==================================
+        PROFILE DROPDOWN
+==================================*/
+
+.profile-dropdown{
+    position:relative;
+}
+
+.profile-btn{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    border:none;
+    background:#f5f5f5;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.profile-btn:hover{
+
+    background:#2874f0;
+    color:#fff;
+
+}
+
+.profile-btn .material-icons{
+
+    font-size:24px;
+
+}
+
+.profile-menu{
+
+    position:absolute;
+
+    top:60px;
+    right:0;
+
+    width:240px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.profile-menu.show{
+
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+
+}
+
+.profile-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 18px;
+
+    color:#333;
+
+    transition:.25s;
+
+    font-size:15px;
+
+}
+
+.profile-menu a:hover{
+
+    background:#2874f0;
+    color:#fff;
+
+}
+
+.profile-menu hr{
+
+    border:none;
+    border-top:1px solid #eee;
+
+}
+
+/*==================================
+        SEARCH FOCUS
+==================================*/
+
+.search-box{
+
+    transition:.3s;
+
+}
+
+.search-box:focus-within{
+
+    background:#fff;
+
+    box-shadow:0 0 0 3px rgba(40,116,240,.18);
+
+}
+
+/*==================================
+        SEARCH INPUT
+==================================*/
+
+.search-box input::placeholder{
+
+    color:#888;
+
+}
+
+.search-box input:focus{
+
+    outline:none;
+
+}
+
+/*==================================
+        SEARCH BUTTON
+==================================*/
+
+.search-box button{
+
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:#1565c0;
+
+}
+
+/*==================================
+        BADGE ANIMATION
+==================================*/
+
+.badge{
+
+    animation:pulseBadge 2s infinite;
+
+}
+
+@keyframes pulseBadge{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*==================================
+        ICON ANIMATION
+==================================*/
+
+.icon-link{
+
+    transition:.3s;
+
+}
+
+.icon-link:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+/*==================================
+        STICKY NAVBAR
+==================================*/
+
+.navbar.sticky{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    animation:navbarSlide .35s ease;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+
+}
+
+@keyframes navbarSlide{
+
+    from{
+
+        transform:translateY(-100%);
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==================================
+        MENU HOVER
+==================================*/
+
+.menu-list li{
+
+    position:relative;
+
+}
+
+.menu-list li::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-10px;
+
+    width:0;
+
+    height:3px;
+
+    background:#ffeb3b;
+
+    transition:.3s;
+
+}
+
+.menu-list li:hover::after{
+
+    width:100%;
+
+}
+
+/*==================================
+        ACTIVE MENU
+==================================*/
+
+.menu-list a.active{
+
+    color:#ffeb3b;
+
+    font-weight:700;
+
+}
+
+/*==================================
+        LOGO HOVER
+==================================*/
+
+.logo{
+
+    transition:.3s;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.03);
+
+}
+
+/*==================================
+        NAVBAR SHADOW
+==================================*/
+
+.navbar{
+
+    transition:.3s;
+
+}
+
+/*==================================
+        SCROLL SPACE
+==================================*/
+
+body{
+
+    padding-top:0;
+
+}
+
+body.nav-fixed{
+
+    padding-top:72px;
+
+}
+
+
+/*====================================================
+        MANIKANTA SALES
+        RESPONSIVE NAVBAR CSS
+        320px - 1440px
+====================================================*/
+
+
+/*====================================================
+        LARGE DESKTOP
+        1440px +
+====================================================*/
+
+
+@media (min-width:1440px){
+
+
+    .container{
+
+        max-width:1400px;
+
+    }
+
+
+    .navbar-container{
+
+        height:80px;
+
+    }
+
+
+    .logo a{
+
+        font-size:30px;
+
+    }
+
+
+    .search-box{
+
+        max-width:650px;
+
+    }
+
+
+}
+
+
+
+
+/*====================================================
+        LAPTOP
+        1024px - 1280px
+====================================================*/
+
+
+@media(max-width:1280px){
+
+
+
+    .navbar-container{
+
+        gap:15px;
+
+    }
+
+
+
+    .search-box{
+
+        max-width:450px;
+
+    }
+
+
+
+    .menu-list{
+
+        gap:25px;
+
+    }
+
+
+
+    .login-btn,
+    .register-btn{
+
+
+        padding:9px 14px;
+
+    }
+
+
+}
+
+
+
+
+
+
+/*====================================================
+        TABLET
+        768px - 1024px
+====================================================*/
+
+
+@media(max-width:1024px){
+
+
+
+    .navbar-container{
+
+
+        height:70px;
+
+    }
+
+
+
+    .logo a{
+
+
+        font-size:24px;
+
+
+    }
+
+
+
+
+    .search-box{
+
+
+        max-width:350px;
+
+
+    }
+
+
+
+
+    .right-menu{
+
+
+        gap:10px;
+
+    }
+
+
+
+    .login-btn span,
+    .register-btn{
+
+
+        display:none;
+
+    }
+
+
+
+    .icon-link{
+
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+
+
+    .menu-list{
+
+
+        gap:20px;
+
+    }
+
+
+}
+
+
+
+
+
+
+/*====================================================
+        MOBILE NAVBAR
+        BELOW 768px
+====================================================*/
+
+
+@media(max-width:768px){
+
+
+
+    .navbar-container{
+
+
+        height:65px;
+
+    }
+
+
+
+
+    /* Hide Desktop Items */
+
+
+    .right-menu,
+    .menu-bar{
+
+
+        display:none;
+
+    }
+
+
+
+
+
+    .search-box{
+
+
+        position:absolute;
+
+        top:75px;
+
+        left:5%;
+
+
+        width:90%;
+
+
+        max-width:none;
+
+
+    }
+
+
+
+
+
+    .navbar{
+
+
+        margin-bottom:65px;
+
+    }
+
+
+
+
+
+    .mobile-menu-btn{
+
+
+        display:block;
+
+
+    }
+
+
+
+
+
+    .mobile-menu-btn .material-icons{
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/*====================================================
+        MOBILE MENU OPEN
+====================================================*/
+
+
+.mobile-menu{
+
+
+    display:none;
+
+    background:#fff;
+
+    position:absolute;
+
+    top:65px;
+
+    left:0;
+
+    width:100%;
+
+    box-shadow:var(--shadow);
+
+    z-index:9999;
+
+
+}
+
+
+
+
+.mobile-menu.show{
+
+
+    display:block;
+
+
+}
+
+
+
+
+.mobile-menu a{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px 20px;
+
+    border-bottom:1px solid var(--border);
+
+    font-weight:600;
+
+}
+
+
+
+
+
+.mobile-menu a:hover{
+
+
+    background:#2874f0;
+
+    color:white;
+
+
+}
+
+
+
+/*====================================================
+        MOBILE NAVBAR WITH HAMBURGER
+====================================================*/
+
+@media(max-width:768px){
+
+    .navbar-container{
+        height:65px;
+        position:relative;
+    }
+
+
+    /* Logo */
+
+    .logo a{
+        font-size:20px;
+    }
+
+
+
+    /* Hamburger Show */
+
+    .mobile-menu-btn{
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        width:45px;
+        height:45px;
+
+        border:none;
+        background:transparent;
+
+        cursor:pointer;
+
+        order:3;
+    }
+
+
+    .mobile-menu-btn .material-icons{
+
+        font-size:34px;
+        transition:.3s;
+
+    }
+
+
+
+
+    /* Hide desktop category */
+
+    .menu-bar{
+
+        display:block;
+
+        position:absolute;
+
+        top:65px;
+        left:0;
+
+        width:100%;
+
+        background:white;
+
+        box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+        z-index:9999;
+
+        display:none;
+
+    }
+
+
+
+
+    /* When hamburger clicked */
+
+    .menu-list.show{
+
+        display:flex;
+
+    }
+
+
+
+    .menu-list{
+
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        justify-content:flex-start;
+
+
+        height:auto;
+
+        gap:0;
+
+        padding:10px 0;
+
+
+    }
+
+
+
+    .menu-list li{
+
+        width:100%;
+
+    }
+
+
+
+    .menu-list a{
+
+
+        display:block;
+
+        width:100%;
+
+
+        padding:15px 20px;
+
+
+        color:#333;
+
+
+        font-weight:600;
+
+        border-bottom:1px solid #eee;
+
+
+    }
+
+
+
+    .menu-list a:hover,
+    .menu-list a.active{
+
+
+        background:#2874f0;
+
+        color:white;
+
+    }
+
+
+
+
+    /* Right menu hide */
+
+    .right-menu{
+
+        display:none;
+
+    }
+
+
+
+    /* Search */
+
+    .search-box{
+
+        position:absolute;
+
+        top:75px;
+
+        left:5%;
+
+        width:90%;
+
+        max-width:none;
+
+    }
+
+
+
+    .navbar{
+
+        margin-bottom:65px;
+
+    }
+
+
+
+}
+
+
+
+/*====================================================
+        HAMBURGER ANIMATION
+====================================================*/
+
+
+.mobile-menu-btn.active .material-icons{
+
+    transform:rotate(90deg);
+
+}
+
+
+
+/*====================================================
+        MOBILE SMALL
+====================================================*/
+
+
+@media(max-width:480px){
+
+
+    .logo a{
+
+        font-size:18px;
+
+    }
+
+
+    .search-box input{
+
+        height:42px;
+
+    }
+
+
+    .mobile-menu-btn .material-icons{
+
+        font-size:30px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+
+.menu-bar{
+
+    display:block;
+
+    position:absolute;
+
+    top:65px;
+
+    left:0;
+
+    width:100%;
+
+    background:#2874f0;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+}
+
+
+.menu-bar.show{
+
+    max-height:600px;
+
+}
+
+
+
+.menu-list{
+
+    flex-direction:column;
+
+    height:auto;
+
+    gap:0;
+
+    align-items:flex-start;
+
+}
+
+
+
+.menu-list li{
+
+    width:100%;
+
+}
+
+
+
+.menu-list a{
+
+    display:block;
+
+    width:100%;
+
+    padding:15px 20px;
+
+}
+
+
+}
+
+
+
+/*====================================================
+        MANIKANTA SALES LOGIN PAGE
+====================================================*/
+
+
+.login-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#f5f5f5;
+
+    padding:40px 0;
+
+}
+
+
+
+/* CONTAINER */
+
+.login-page .container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+
+
+/* LOGIN CARD */
+
+.login-card{
+
+    display:flex;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+
+
+/*====================================================
+        LEFT SECTION
+====================================================*/
+
+
+.login-left{
+
+    width:50%;
+
+    background:#2874f0;
+
+    color:white;
+
+    padding:50px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+
+.login-left h1{
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.login-left p{
+
+    font-size:17px;
+
+    line-height:1.6;
+
+}
+
+
+
+.login-left strong{
+
+    color:#ffeb3b;
+
+}
+
+
+
+.login-left img{
+
+    width:280px;
+
+    margin-top:30px;
+
+}
+
+
+
+/*====================================================
+        RIGHT SECTION
+====================================================*/
+
+
+.login-right{
+
+    width:50%;
+
+    padding:50px;
+
+}
+
+
+
+.login-right h2{
+
+    font-size:32px;
+
+    color:#222;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/* INPUT GROUP */
+
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.input-group label{
+
+    display:block;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#333;
+
+}
+
+
+
+.input-group input{
+
+    width:100%;
+
+    height:48px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+
+
+.input-group input:focus{
+
+    border-color:#2874f0;
+
+    box-shadow:0 0 0 3px rgba(40,116,240,.15);
+
+}
+
+
+
+/* PASSWORD */
+
+
+.password-box{
+
+    position:relative;
+
+}
+
+
+
+.password-box input{
+
+    padding-right:45px;
+
+}
+
+
+
+.password-box .material-icons{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color:#777;
+
+}
+
+
+
+/*====================================================
+        OPTIONS
+====================================================*/
+
+
+.login-options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:20px 0;
+
+    font-size:14px;
+
+}
+
+
+
+.login-options label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+
+.login-options a{
+
+    color:#2874f0;
+
+    font-weight:600;
+
+}
+
+
+
+.login-options a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+
+/* ERROR */
+
+
+.error-message{
+
+    color:red;
+
+    font-size:14px;
+
+    min-height:20px;
+
+}
+
+
+
+/* BUTTON */
+
+
+.login-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    background:#2874f0;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.login-btn:hover{
+
+    background:#1565c0;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* REGISTER */
+
+
+.register-link{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    font-size:15px;
+
+}
+
+
+
+.register-link a{
+
+    color:#2874f0;
+
+    font-weight:600;
+
+}
+
+
+
+/*====================================================
+        MOBILE RESPONSIVE
+====================================================*/
+
+
+@media(max-width:900px){
+
+
+.login-card{
+
+    flex-direction:column;
+
+}
+
+
+
+.login-left,
+
+.login-right{
+
+    width:100%;
+
+}
+
+
+
+.login-left{
+
+    padding:35px 20px;
+
+}
+
+
+
+.login-left h1{
+
+    font-size:30px;
+
+}
+
+
+
+.login-left img{
+
+    width:200px;
+
+}
+
+
+
+.login-right{
+
+    padding:35px 25px;
+
+}
+
+
+
+.login-right h2{
+
+    text-align:center;
+
+}
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+.login-page{
+
+    padding:20px 0;
+
+}
+
+
+
+.login-page .container{
+
+    width:95%;
+
+}
+
+
+
+.login-left h1{
+
+    font-size:26px;
+
+}
+
+
+
+.login-left p{
+
+    font-size:14px;
+
+}
+
+
+
+.login-right{
+
+    padding:25px 20px;
+
+}
+
+
+
+.login-options{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+
+}
+
+
+
+
+
+
+
+/*user*/
+/* =====================================
+   MANIKANTA SALES
+   USER SIDE COMMON CSS
+===================================== */
+
+
+/* RESET */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+}
+
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+body{
+
+    background:#f1f3f6;
+
+    color:#212121;
+
+    min-height:100vh;
+
+}
+
+
+
+
+
+/* LINKS */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+
+
+/* IMAGES */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+
+
+
+/* CONTAINER */
+
+.container{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+
+
+
+
+/* SECTION COMMON */
+
+.section{
+
+    background:white;
+
+    margin:20px auto;
+
+    padding:25px;
+
+    border-radius:10px;
+
+}
+
+
+
+
+
+.section-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    color:#212121;
+
+}
+
+
+
+
+
+
+
+/* BUTTON COMMON */
+
+
+.btn{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    padding:12px 25px;
+
+    border-radius:5px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+
+
+
+.btn-primary{
+
+
+    background:#2874f0;
+
+    color:white;
+
+
+}
+
+
+
+.btn-primary:hover{
+
+
+    background:#0b5ed7;
+
+}
+
+
+
+
+.btn-orange{
+
+
+    background:#fb641b;
+
+    color:white;
+
+
+}
+
+
+
+.btn-orange:hover{
+
+
+    background:#e85a13;
+
+}
+
+
+
+
+
+
+
+/* CARD COMMON */
+
+
+.card{
+
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:
+
+    0 2px 10px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+
+}
+
+
+
+.card:hover{
+
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.15);
+
+
+}
+
+
+
+
+
+
+/* FLEX UTILITIES */
+
+
+.flex{
+
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+.flex-between{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+}
+
+
+
+.flex-center{
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+/* BADGE */
+
+
+.badge{
+
+
+    background:#fb641b;
+
+    color:white;
+
+    padding:3px 8px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+
+
+/* PRICE */
+
+
+.price{
+
+
+    color:#212121;
+
+    font-size:22px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.old-price{
+
+
+    color:#878787;
+
+    text-decoration:line-through;
+
+    font-size:14px;
+
+}
+
+
+
+.discount{
+
+
+    color:#388e3c;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+
+
+/* INPUT COMMON */
+
+
+input,
+textarea,
+select{
+
+
+    outline:none;
+
+    border:1px solid #ddd;
+
+    padding:12px;
+
+    border-radius:5px;
+
+    font-size:15px;
+
+
+}
+
+
+
+input:focus,
+textarea:focus{
+
+
+    border-color:#2874f0;
+
+
+}
+
+
+
+
+
+
+
+/* EMPTY PAGE */
+
+
+.empty-box{
+
+
+    background:white;
+
+    padding:50px;
+
+    text-align:center;
+
+    border-radius:10px;
+
+
+}
+
+
+
+.empty-box h2{
+
+
+    color:#555;
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+
+/* LOADING */
+
+
+.loader{
+
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid #2874f0;
+
+    animation:spin 1s linear infinite;
+
+
+}
+
+
+
+@keyframes spin{
+
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* TOAST */
+
+
+.toast{
+
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    background:#212121;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:8px;
+
+    display:none;
+
+    z-index:9999;
+
+
+}
+
+
+
+
+.toast.show{
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:768px){
+
+
+.container{
+
+
+    width:95%;
+
+
+}
+
+
+
+.section{
+
+
+    padding:15px;
+
+
+}
+
+
+
+.section-title{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+.btn{
+
+
+    padding:10px 18px;
+
+
+}
+
+
+
+}
+.sidebar-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu-text{
+    flex:1;
+}
+
+.menu-badge{
+
+    min-width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#ff3b30;
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* =====================
+   DARK MODE
+===================== */
+
+
+body.dark{
+
+    background:#121212;
+    color:#ffffff;
+
+}
+
+
+
+body.dark .navbar{
+
+    background:#1f1f1f;
+
+}
+
+
+
+body.dark .card,
+body.dark .settings-sidebar,
+body.dark .settings-content{
+
+    background:#1e1e1e;
+    color:white;
+
+}
+
+
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+
+    background:#2b2b2b;
+    color:white;
+    border-color:#444;
+
+}
+
+
+
+body.dark a{
+
+    color:white;
+
+}
+
+
+/* =========================
+   DARK MODE - ADMIN FORMS
+========================= */
+
+
+body.dark .admin-container {
+
+    background:#121212;
+
+}
+
+
+
+body.dark .sidebar {
+
+    background:#1e1e1e !important;
+    color:white;
+
+}
+
+
+
+body.dark .main-content {
+
+    background:#121212;
+
+}
+
+
+
+body.dark .form-container {
+
+    background:#1e1e1e !important;
+
+    color:white !important;
+
+    border:1px solid #333;
+
+}
+
+
+
+body.dark .page-header h2,
+body.dark .page-header p {
+
+    color:white !important;
+
+}
+
+
+
+
+body.dark .form-group label {
+
+    color:white !important;
+
+}
+
+
+
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+
+    background:#222 !important;
+
+    color:white !important;
+
+    border:1px solid #555;
+
+}
+
+
+
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+
+    color:#aaa;
+
+}
+
+
+
+
+
+body.dark .btn-cancel {
+
+    background:#333;
+
+    color:white;
+
+}
+
+
+
+body.dark .btn-save {
+
+    background:#2874f0;
+
+    color:white;
+
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile</title>
+
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="/css/uproducts.css">
+</head>
+
+
+<body data-page="profile">
+
+
+ <div id="navbar-container"></div>
+<div class="profile-card">
+
+
+    <!-- Profile Image -->
+
+    <img id="profileImage"
+         src="../images/admin.png"
+         class="profile-image"
+         alt="Profile Image">
+
+
+
+    <h2 id="name">Loading...</h2>
+
+
+    <p id="email"></p>
+
+
+
+    <table>
+
+
+        <tr>
+            <td><b>ID</b></td>
+            <td id="id"></td>
+        </tr>
+
+
+        <tr>
+            <td><b>Role</b></td>
+            <td id="role"></td>
+        </tr>
+
+
+        <tr>
+            <td><b>Mobile</b></td>
+            <td id="phone"></td>
+        </tr>
+
+
+        <tr>
+            <td><b>Status</b></td>
+            <td id="status"></td>
+        </tr>
+
+
+    </table>
+
+
+<div class="profile-actions">
+
+
+    <button onclick="location.href='edit-profile.html'">
+        Edit Profile
+    </button>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+<script src="../js/profile.js"></script>
+<script src="../js/usernavbar.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+
+</html>

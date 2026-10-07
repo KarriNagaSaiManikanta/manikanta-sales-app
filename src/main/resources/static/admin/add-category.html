@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>Add Category | Manikanta Sales</title>
+
+
+<link rel="stylesheet" href="../css/style.css">
+
+<link rel="stylesheet" href="../css/admin.css">
+
+<link rel="stylesheet" href="../css/form.css">
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+
+<link rel="stylesheet" href="../css/admin-navbar.css">
+</head>
+
+
+
+<body >
+<script src="../js/admin-auth.js"></script>
+<script src="../js/admin-navbar.js"></script>
+<div class="admin-container">
+
+
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="sidebar-logo">
+
+<h2>
+Manikanta Sales
+</h2>
+
+<p>
+Admin Panel
+</p>
+
+</div>
+
+
+
+
+
+<ul class="sidebar-menu">
+
+
+<li>
+
+<a href="dashboard.html">
+
+<span class="material-icons">
+dashboard
+</span>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+<li class="active">
+
+<a href="categories.html">
+
+<span class="material-icons">
+category
+</span>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="products.html">
+
+<span class="material-icons">
+inventory_2
+</span>
+
+Products
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="orders.html">
+
+<span class="material-icons">
+shopping_cart
+</span>
+
+Orders
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="users.html">
+
+<span class="material-icons">
+people
+</span>
+
+Users
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="profile.html">
+
+<span class="material-icons">
+person
+</span>
+
+Profile
+
+</a>
+
+</li>
+
+
+
+
+<li>
+
+<a href="#" onclick="logout()">
+
+<span class="material-icons">
+logout
+</span>
+
+Logout
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- MAIN -->
+<!-- ========================= -->
+
+
+<main class="main-content">
+
+
+
+<div class="page-header">
+
+
+<div>
+
+<h2>
+Add Category
+</h2>
+
+
+<p>
+Create a New Product Category
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-container">
+
+
+<form id="categoryForm">
+
+
+
+
+
+<div class="form-grid">
+
+
+
+
+
+<!-- NAME -->
+
+
+<div class="form-group">
+
+
+<label>
+Category Name
+</label>
+
+
+<input
+
+type="text"
+
+id="name"
+
+placeholder="Enter Category Name"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- IMAGE UPLOAD -->
+
+
+<div class="form-group">
+
+
+<label>
+Category Image
+</label>
+
+
+
+<input
+
+type="file"
+
+id="image"
+
+accept="image/*"
+
+onchange="previewImage(event)"
+
+required>
+
+
+
+<img
+
+id="preview"
+
+src=""
+
+width="150"
+
+height="150"
+
+style="
+display:none;
+margin-top:15px;
+object-fit:cover;
+border-radius:10px;
+">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- DESCRIPTION -->
+
+
+<div class="form-group full-width">
+
+
+<label>
+Description
+</label>
+
+
+
+<textarea
+
+id="description"
+
+placeholder="Category Description">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- STATUS -->
+
+
+<div class="form-group full-width">
+
+
+<div class="checkbox-group">
+
+
+<input
+
+type="checkbox"
+
+id="active"
+
+checked>
+
+
+
+<label for="active">
+
+Active
+
+</label>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-buttons">
+
+
+
+<button
+
+type="button"
+
+class="btn-cancel"
+
+onclick="history.back()">
+
+Cancel
+
+</button>
+
+
+
+
+
+
+<button
+
+type="submit"
+
+class="btn-save">
+
+Save Category
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<p id="message"></p>
+
+
+
+</form>
+
+
+</div>
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Loader -->
+
+<div id="loader">
+
+
+<div class="spinner"></div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Toast -->
+
+<div id="toast">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="../js/api.js"></script>
+
+<script src="../js/admin.js"></script>
+
+<script src="../js/add-category.js"></script>
+<script src="../js/theme.js"></script>
+
+</body>
+
+
+</html>

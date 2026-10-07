@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Manikanta Sales</title>
+
+    <link rel="stylesheet"
+          href="css/checkout.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+<link rel="stylesheet" href="/css/uproducts.css">
+</head>
+
+<body data-page="chechout">
+<div id="navbar-container"></div>
+<!-- =========================
+        HEADER
+========================= -->
+<div id="navbar-container"></div>
+
+
+<!-- =========================
+        CHECKOUT
+========================= -->
+
+<div class="checkout-container">
+
+
+    <!-- LEFT -->
+
+    <div class="checkout-left">
+
+
+        <!-- ADDRESS -->
+
+        <div class="card">
+
+            <h2>
+                Delivery Address
+            </h2>
+
+            <div id="addressList">
+
+                <p>
+                    Loading addresses...
+                </p>
+
+            </div>
+
+            <button
+                    class="add-address-btn"
+                    onclick="addNewAddress()">
+
+                + Add New Address
+
+            </button>
+
+        </div>
+
+
+        <!-- SELECTED PRODUCTS -->
+
+        <div class="card">
+
+            <h2>
+
+                Selected Products
+
+            </h2>
+
+            <div id="cartItems">
+
+                <p>
+                    Loading selected products...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="card">
+
+            <h2>
+
+                Payment Method
+
+            </h2>
+
+            <label class="payment-option">
+
+                <input
+                        type="radio"
+                        name="payment"
+                        value="COD"
+                        checked>
+
+                Cash On Delivery
+
+            </label>
+
+            <br><br>
+
+            
+        </div>
+
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="checkout-right">
+
+        <div class="card price-card">
+
+            <h2>
+
+                Price Details
+
+            </h2>
+
+            <div class="price-row">
+
+                <span>
+
+                    Selected Items
+
+                </span>
+
+                <span id="selectedItems">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div class="price-row">
+
+                <span>
+
+                    Product Total
+
+                </span>
+
+                <span id="productTotal">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+            <div class="price-row">
+
+                <span>
+
+                    Shipping Charge
+
+                </span>
+
+                <span id="shippingCharge">
+
+                    ₹50
+
+                </span>
+
+            </div>
+
+            <hr>
+
+            <div class="total-row">
+
+                <span>
+
+                    Grand Total
+
+                </span>
+
+                <span id="totalAmount">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+            <button
+                    id="placeOrderBtn"
+                    class="place-order-btn"
+                    onclick="placeOrder(this)">
+
+                Place Order
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>
+
+        © 2026 Manikanta Sales. All Rights Reserved.
+
+    </p>
+
+</footer>
+<script src="../js/usernavbar.js"></script>
+<script src="js/checkout.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+
+</html>

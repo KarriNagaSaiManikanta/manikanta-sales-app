@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Verify OTP | Manikanta Sales</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+            VERIFY OTP PAGE
+========================================== -->
+
+<section class="login-page">
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <!-- LEFT -->
+
+            <div class="login-left">
+
+                <h1>
+
+                    Verify Your Email
+
+                </h1>
+
+                <p>
+
+                    We've sent a 6-digit OTP to your registered email address.
+                    Enter the OTP below to complete your registration.
+
+                </p>
+
+                <img src="images/otp.png"
+                     alt="OTP Verification">
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="login-right">
+
+                <h2>
+
+                    Email Verification
+
+                </h2>
+
+                <form id="verifyOtpForm">
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                                type="email"
+                                id="email"
+                                readonly>
+
+                    </div>
+
+                    <!-- OTP -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Enter OTP
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="otp"
+                                maxlength="6"
+                                placeholder="Enter 6 Digit OTP"
+                                required>
+
+                    </div>
+
+                    <!-- MESSAGE -->
+
+                    <p id="otpMessage"
+                       class="error-message"></p>
+
+                    <!-- VERIFY -->
+
+                    <button
+                            type="submit"
+                            id="verifyBtn"
+                            class="btn btn-primary login-btn">
+
+                        Verify OTP
+
+                    </button>
+
+                </form>
+
+                <!-- COUNTDOWN -->
+
+                <div
+                        style="margin-top:20px;text-align:center;">
+
+                    <span>
+
+                        Resend OTP in
+
+                    </span>
+
+                    <strong id="timer">
+
+                        60
+
+                    </strong>
+
+                    sec
+
+                </div>
+
+                <!-- RESEND -->
+
+                <div
+                        style="margin-top:20px;text-align:center;">
+
+                    <button
+
+                            id="resendBtn"
+
+                            class="btn btn-success"
+
+                            disabled>
+
+                        Resend OTP
+
+                    </button>
+
+                </div>
+
+                <!-- REGISTER -->
+
+                <div class="register-link">
+
+                    Wrong Email?
+
+                    <a href="register.html">
+
+                        Register Again
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/api.js"></script>
+<script src="../js/admin-auth.js"></script>
+<script src="js/verify-otp.js"></script>
+
+</body>
+
+</html>

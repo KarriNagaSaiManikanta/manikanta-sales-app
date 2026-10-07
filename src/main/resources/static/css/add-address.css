@@ -1,0 +1,241 @@
+/* =====================================
+   ADD ADDRESS PAGE
+   MANIKANTA SALES
+===================================== */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    background:#f1f3f6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+/* ===============================
+   CONTAINER
+=============================== */
+
+
+.address-container{
+
+    width:100%;
+
+    max-width:500px;
+
+    padding:20px;
+
+}
+
+
+
+
+/* ===============================
+   CARD
+=============================== */
+
+
+.address-card{
+
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.15);
+
+}
+
+
+
+.address-card h2{
+
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#2874f0;
+
+    font-size:26px;
+
+
+}
+
+
+
+/* ===============================
+   INPUTS
+=============================== */
+
+
+.address-card input{
+
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+
+    border:1px solid #ddd;
+
+    border-radius:6px;
+
+
+    font-size:15px;
+
+
+    outline:none;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.address-card input:focus{
+
+
+    border-color:#2874f0;
+
+    box-shadow:
+    0 0 5px rgba(40,116,240,.3);
+
+
+}
+
+
+
+
+/* ===============================
+   BUTTONS
+=============================== */
+
+
+.address-card button{
+
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:6px;
+
+
+    background:#fb641b;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.address-card button:hover{
+
+
+    background:#e85b16;
+
+
+}
+
+
+
+
+
+/* CANCEL BUTTON */
+
+
+.address-card .back{
+
+
+    background:#2874f0;
+
+}
+
+
+
+.address-card .back:hover{
+
+
+    background:#1257c7;
+
+
+}
+
+
+
+
+
+
+/* ===============================
+   MOBILE RESPONSIVE
+=============================== */
+
+
+@media(max-width:600px){
+
+
+    .address-container{
+
+        padding:15px;
+
+    }
+
+
+    .address-card{
+
+
+        padding:20px;
+
+    }
+
+
+
+    .address-card h2{
+
+
+        font-size:22px;
+
+    }
+
+
+}

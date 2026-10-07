@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manikanta Sales | User Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="user-container">
+
+    <!-- =========================
+            SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>Manikanta Sales</h2>
+
+            <p>User Panel</p>
+
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li class="active">
+                <a href="dashboard.html">
+                    <span class="material-icons">dashboard</span>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    <span class="material-icons">inventory_2</span>
+                    Products
+                </a>
+            </li>
+
+           <li>
+    <a href="cart.html">
+        <span class="material-icons">shopping_cart</span>
+
+        <span class="menu-text">Cart</span>
+
+        <span id="sidebarCartCount" class="menu-badge">
+            0
+        </span>
+    </a>
+</li>
+<li>
+    <a href="wishlist.html">
+        <span class="material-icons">favorite</span>
+
+        <span class="menu-text">Wishlist</span>
+
+        <span id="sidebarWishlistCount" class="menu-badge">
+            0
+        </span>
+    </a>
+</li>
+
+            <li>
+    <a href="my-orders.html">
+
+        <span class="material-icons">
+            receipt_long
+        </span>
+
+        My Orders
+
+    </a>
+</li>
+
+            <li>
+                <a href="profile.html">
+                    <span class="material-icons">person</span>
+                    Profile
+                </a>
+            </li>
+
+           
+
+            <li>
+                <a href="#" onclick="logout()">
+                    <span class="material-icons">logout</span>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- =========================
+            MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- =========================
+              TOP NAVBAR
+        ========================== -->
+
+        <header class="top-navbar">
+
+            <!-- LEFT -->
+
+            <div class="top-left">
+
+                <div class="welcome-box">
+
+                    <h3>
+                        Welcome Back,
+                        <span id="welcomeUserName">
+                            Loading...
+                        </span>
+                        👋
+                    </h3>
+
+                    <p>
+                        Happy Shopping with Manikanta Sales
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="top-right">
+
+                <!-- ONLY PROFILE -->
+
+                <div class="user-profile"
+                     onclick="window.location.href='profile.html'">
+
+                    <img
+                        id="userProfileImage"
+                        src="../images/user.png"
+                        alt="Profile">
+
+                    <div>
+
+                        <h4 id="userName">
+                            Loading...
+                        </h4>
+
+                        <small id="userEmail">
+                            Loading...
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+                <!-- =========================
+                HERO SECTION
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-left">
+
+                <span id="offer" class="offer"></span>
+
+                <h1 id="title"></h1>
+
+                <p id="description"></p>
+
+                <button onclick="window.location.href='products.html'">
+                    Shop Now
+                </button>
+
+            </div>
+
+            <div class="hero-right">
+
+                <img
+                    id="bannerImage"
+                    src="../images/banner.png"
+                    alt="Banner">
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+                QUICK USER CARDS
+        ========================== -->
+
+        <section class="user-cards">
+
+            <div class="user-card"
+                 onclick="window.location.href='products.html'">
+
+                <span class="material-icons">
+                    inventory_2
+                </span>
+
+                <div>
+
+                    <h3>Products</h3>
+
+                    <p>Explore Latest Products</p>
+
+                </div>
+
+            </div>
+
+            <div class="user-card"
+                 onclick="window.location.href='cart.html'">
+
+                <span class="material-icons">
+                    shopping_cart
+                </span>
+
+                <div>
+
+                    <h3>My Cart</h3>
+
+                    <p>View Cart Items</p>
+
+                </div>
+
+            </div>
+
+            <div class="user-card"
+                 onclick="window.location.href='wishlist.html'">
+
+                <span class="material-icons">
+                    favorite
+                </span>
+
+                <div>
+
+                    <h3>Wishlist</h3>
+
+                    <p>Saved Products</p>
+
+                </div>
+
+            </div>
+
+           <a href="my-orders.html" class="user-card">
+
+    <span class="material-icons">
+        local_shipping
+    </span>
+
+    <div>
+        <h3>My Orders</h3>
+        <p>Track Your Orders</p>
+    </div>
+
+</a>
+
+        </section>
+
+        <!-- =========================
+                CATEGORY SECTION
+        ========================== -->
+
+        <section class="category-section">
+
+            <!-- CATEGORY SECTION -->
+
+<section class="category-section">
+
+    <h2>Shop By Category</h2>
+
+
+    <div class="category-container" 
+         id="homeCategoryContainer">
+
+
+    </div>
+
+
+</section>
+
+
+        </section>
+                <!-- =========================
+                PRODUCTS SECTION
+        ========================== -->
+
+        <section class="products-section">
+
+            <div class="section-header">
+
+                <h2>Latest Products</h2>
+
+                <button onclick="window.location.href='products.html'">
+                    View All
+                </button>
+
+            </div>
+
+            <div id="product-container"
+                 class="product-container">
+
+                <!-- Dynamic Products -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- =========================
+        JAVASCRIPT FILES
+========================== -->
+
+<script src="../js/product.js"></script>
+
+<script src="../js/userdash.js"></script>
+
+<script src="../js/hero.js"></script>
+
+<script src="../js/cart-wishlist.js"></script>
+
+<script>
+
+    function logout(){
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        window.location.href="login.html";
+
+    }
+
+    function openProducts(){
+
+        window.location.href="products.html";
+
+    }
+
+    function openCart(){
+
+        window.location.href="cart.html";
+
+    }
+
+    function openWishlist(){
+
+        window.location.href="wishlist.html";
+
+    }
+
+    function openOrders(){
+
+        window.location.href="orders.html";
+
+    }
+
+    function openProfile(){
+
+        window.location.href="profile.html";
+
+    }
+
+    function openSettings(){
+
+        window.location.href="settings.html";
+
+    }
+
+</script>
+<script src="/js/auth.js"></script>
+<script src="/js/auth.js"></script>
+<script src="js/category-home.js"></script>
+</body>
+
+</html>

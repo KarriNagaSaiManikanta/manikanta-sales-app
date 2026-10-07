@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Products | Manikanta Sales</title>
+
+
+<link rel="stylesheet" href="/css/uproducts.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- ==============================
+        NAVBAR
+================================ -->
+
+
+<header class="navbar">
+
+
+    <div class="logo">
+
+        Manikanta Sales
+
+    </div>
+
+
+
+   <div class="search-box">
+
+
+<input 
+type="text"
+id="searchInput"
+placeholder="Search products...">
+
+
+<button onclick="searchProducts()">
+
+🔍
+
+</button>
+
+
+</div>
+
+
+
+    <div class="nav-actions">
+
+
+        <a href="/index.html">
+            Home
+        </a>
+
+
+        <a href="/cart.html">
+
+            🛒 Cart
+
+        </a>
+
+
+        <a href="/wishlist.html">
+
+            ❤️ Wishlist
+
+        </a>
+
+
+
+        <a href="/profile.html">
+
+            👤 Profile
+
+        </a>
+
+
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+<section class="category-bar">
+
+<div id="categoryContainer">
+
+Loading Categories...
+
+</div>
+
+
+
+<select id="priceRange" onchange="filterPrice()">
+
+<option value="">
+
+All Price
+
+</option>
+
+
+
+
+
+    <option value="asc">
+        Price: Low to High
+    </option>
+
+    <option value="desc">
+        Price: High to Low
+    </option>
+
+</select>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ==============================
+        PRODUCT SECTION
+================================ -->
+
+
+<section class="product-section">
+
+
+
+<h2>
+
+    Latest Products
+
+</h2>
+
+
+
+
+<div id="productContainer"
+     class="product-container">
+
+
+<!-- Products Loaded By JS -->
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==============================
+        PAGINATION
+================================ -->
+
+
+
+<div class="pagination">
+
+
+<button 
+id="prevBtn"
+onclick="previousPage()">
+
+
+Previous
+
+
+</button>
+
+
+
+
+
+<span id="pageInfo">
+
+Page 1 of 1
+
+</span>
+
+
+
+
+
+<button 
+id="nextBtn"
+onclick="nextPage()">
+
+
+
+Next
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="/js/uproducts.js"></script>
+<script src="js/categories.js"></script>
+
+<script src="/js/auth.js"></script>
+</body>
+
+</html>
+

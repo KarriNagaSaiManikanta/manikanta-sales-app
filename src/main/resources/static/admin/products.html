@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manikanta Sales - Products</title>
+
+    <link rel="stylesheet"
+          href="../css/products.css">
+<link rel="stylesheet" href="../css/admin-navbar.css">
+</head>
+
+<body >
+<script src="../js/admin-navbar.js"></script>
+<div class="container">
+
+    <!-- ==========================
+            HEADER
+    ========================== -->
+
+    <div class="header">
+
+        <center><h1> Product Management</h1></center>
+
+       
+
+    </div>
+
+
+    <!-- ==========================
+            ACTION BAR
+    ========================== -->
+
+    <div class="action-bar">
+
+        <input
+                type="text"
+                id="searchBox"
+                placeholder="Search Product...">
+
+        <button onclick="searchProduct()">
+            Search
+        </button>
+
+        <button
+                class="add-btn"
+                onclick="addProduct()">
+            + Add Product
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+            PRODUCT TABLE
+    ========================== -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>Image</th>
+
+                <th>Product</th>
+
+                <th>Category</th>
+
+                <th>Price</th>
+
+                <th>Stock</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="productTable">
+
+            <!-- Dynamic Data -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- ==========================
+            PAGINATION
+    ========================== -->
+
+    <div class="pagination">
+
+        <button onclick="previousPage()">
+            Previous
+        </button>
+
+        <span id="pageNumber">
+            1
+        </span>
+
+        <button onclick="nextPage()">
+            Next
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="../js/product.js"></script>
+
+<script>
+
+function addProduct(){
+
+    window.location.href="add-product.html";
+
+}
+
+function logout(){
+
+    localStorage.clear();
+
+    window.location.href="../login.html";
+
+}
+
+</script>
+<script src="../js/admin-auth.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+
+</html>

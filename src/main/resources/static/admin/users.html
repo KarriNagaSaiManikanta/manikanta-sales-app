@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Users</title>
+
+
+<link rel="stylesheet"
+href="../css/users.css">
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+<link rel="stylesheet" href="../css/admin-navbar.css">
+
+</head>
+
+
+<body >
+
+<script src="../js/admin-navbar.js"></script>
+<div class="admin-page">
+
+
+
+<!-- HEADER -->
+
+<div class="top-bar">
+
+
+<h2>
+Users Management
+</h2>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- SEARCH AREA -->
+
+
+<div class="search-box">
+
+
+<input type="text"
+id="searchUser"
+placeholder="Search by name or email..."
+onkeyup="searchUsers()">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- USERS TABLE -->
+
+
+<div class="table-card">
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>User</th>
+
+<th>Email</th>
+
+<th>Mobile</th>
+
+<th>Role</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="userTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PAGINATION -->
+
+
+<div class="pagination">
+
+
+<button>
+Previous
+</button>
+
+
+<span>
+1
+</span>
+
+
+<button>
+Next
+</button>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+<script src="../js/admin-auth.js"></script>
+
+<script src="../js/users.js"></script>
+<script src="../js/theme.js"></script>
+
+</body>
+
+</html>

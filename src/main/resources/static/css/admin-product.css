@@ -1,0 +1,344 @@
+/* =====================================
+   GLOBAL
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+
+body{
+
+    background:#f4f6f9;
+
+    min-height:100vh;
+
+    color:#333;
+
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+
+.header{
+
+    background:#2874f0;
+
+    color:white;
+
+    padding:18px 40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+
+}
+
+
+
+.header h2{
+
+    font-size:24px;
+
+    font-weight:600;
+
+}
+
+
+
+.header button{
+
+    background:#fb641b;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 25px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.header button:hover{
+
+    background:#e85b16;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* =====================================
+   FORM CONTAINER
+===================================== */
+
+
+.form-container{
+
+    width:90%;
+
+    max-width:750px;
+
+    margin:40px auto;
+
+    background:white;
+
+    padding:35px 45px;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+}
+
+
+
+/* =====================================
+   LABEL
+===================================== */
+
+
+.form-container label{
+
+    display:block;
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+
+
+/* =====================================
+   INPUTS
+===================================== */
+
+
+.form-container input,
+.form-container textarea,
+.form-container select{
+
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border:1px solid #ddd;
+
+    border-radius:7px;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:#fff;
+
+    transition:.3s;
+
+}
+
+
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus{
+
+
+    border-color:#2874f0;
+
+    box-shadow:0 0 5px rgba(40,116,240,.3);
+
+}
+
+
+
+
+textarea{
+
+    height:120px;
+
+    resize:none;
+
+}
+
+
+
+
+
+/* =====================================
+   IMAGE PREVIEW
+===================================== */
+
+
+#preview{
+
+    margin-top:15px;
+
+    border-radius:10px;
+
+    border:1px solid #ddd;
+
+    padding:5px;
+
+    background:#fafafa;
+
+}
+
+
+
+/* =====================================
+   FILE INPUT
+===================================== */
+
+
+input[type="file"]{
+
+    padding:10px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =====================================
+   SAVE BUTTON
+===================================== */
+
+
+.save-btn{
+
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:14px;
+
+    background:#2874f0;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.save-btn:hover{
+
+
+    background:#1258c9;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+
+@media(max-width:768px){
+
+
+.header{
+
+    padding:15px 20px;
+
+}
+
+
+
+.header h2{
+
+    font-size:18px;
+
+}
+
+
+
+.header button{
+
+    padding:8px 15px;
+
+}
+
+
+
+.form-container{
+
+
+    width:95%;
+
+    padding:25px 20px;
+
+}
+
+
+
+}
+
+
+@media(max-width:450px){
+
+
+.header{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+.form-container{
+
+    margin:20px auto;
+
+}
+
+
+
+}

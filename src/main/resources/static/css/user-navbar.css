@@ -1,0 +1,517 @@
+/* =====================================
+   MANIKANTA SALES
+   USER NAVBAR
+   AMAZON / FLIPKART STYLE
+===================================== */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+
+body{
+    background:#f1f3f6;
+}
+
+
+
+/* ===============================
+   NAVBAR
+================================ */
+
+
+.navbar{
+
+    height:70px;
+
+    background:#2874f0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    gap:25px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+
+
+
+
+/* ===============================
+   LOGO
+================================ */
+
+
+.logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    color:white;
+
+}
+
+
+
+.logo img{
+
+    width:45px;
+
+    height:45px;
+
+    object-fit:contain;
+
+    margin-right:10px;
+
+}
+
+
+
+.brand-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.brand-name{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+
+
+.brand-text small{
+
+    color:#ffe500;
+
+    font-size:12px;
+
+    font-style:italic;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   SEARCH BOX
+================================ */
+
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:white;
+
+    height:42px;
+
+    width:45%;
+
+    border-radius:5px;
+
+    overflow:hidden;
+
+}
+
+
+
+.search-box input{
+
+    flex:1;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+}
+
+
+
+.search-box button{
+
+
+    width:55px;
+
+    height:100%;
+
+    border:none;
+
+    background:white;
+
+    color:#2874f0;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+/* ===============================
+   NAV LINKS
+================================ */
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    position:relative;
+
+}
+
+
+
+.nav-links a:hover{
+
+    color:#ffe500;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   LOGIN BUTTON
+================================ */
+
+
+#loginBtn{
+
+    background:white;
+
+    color:#2874f0;
+
+    border:none;
+
+    padding:9px 28px;
+
+    border-radius:3px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+#loginBtn:hover{
+
+    background:#f0f0f0;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   CART WISHLIST ICON
+================================ */
+
+
+.icon-link{
+
+    position:relative;
+
+    font-size:18px;
+
+}
+
+
+
+#wishlistCount,
+#cartCount{
+
+
+    position:absolute;
+
+    top:-12px;
+
+    right:-15px;
+
+
+    background:#fb641b;
+
+    color:white;
+
+
+    width:20px;
+
+    height:20px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    border-radius:50%;
+
+
+    font-size:12px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+
+/* ===============================
+   ACCOUNT DROPDOWN
+================================ */
+
+
+.account{
+
+    position:relative;
+
+}
+
+
+
+.account-dropdown{
+
+    display:none;
+
+    position:absolute;
+
+    right:0;
+
+    top:45px;
+
+    width:220px;
+
+    background:white;
+
+    border-radius:8px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+
+    overflow:hidden;
+
+}
+
+
+
+.account:hover .account-dropdown{
+
+    display:block;
+
+}
+
+
+
+.account-dropdown a{
+
+    display:block;
+
+    color:#333;
+
+    padding:14px 18px;
+
+    font-size:14px;
+
+}
+
+
+
+.account-dropdown a:hover{
+
+    background:#f1f3f6;
+
+    color:#2874f0;
+
+}
+
+
+
+.account-dropdown hr{
+
+    border:none;
+
+    border-top:1px solid #ddd;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   MOBILE MENU
+================================ */
+
+
+.menu{
+
+    display:none;
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+
+@media(max-width:1100px){
+
+
+.navbar{
+
+    padding:0 20px;
+
+}
+
+
+.search-box{
+
+    width:35%;
+
+}
+
+
+.nav-links{
+
+    gap:15px;
+
+}
+
+
+}
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+.navbar{
+
+    flex-wrap:wrap;
+
+    height:auto;
+
+    padding:15px;
+
+}
+
+
+
+.search-box{
+
+    order:3;
+
+    width:100%;
+
+}
+
+
+
+.nav-links{
+
+    display:none;
+
+}
+
+
+
+.menu{
+
+    display:block;
+
+}
+
+
+}

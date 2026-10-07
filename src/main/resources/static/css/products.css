@@ -1,0 +1,285 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f6fa;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header{
+    background:#232f3e;
+    color:#fff;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.header h2{
+    font-size:28px;
+    font-weight:600;
+}
+
+.header button{
+    padding:10px 20px;
+    background:#ff9900;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.header button:hover{
+    background:#e68a00;
+}
+
+/* ===========================
+   ACTION BAR
+=========================== */
+
+.action-bar{
+    width:95%;
+    margin:25px auto;
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.action-bar input{
+    flex:1;
+    padding:13px 15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    outline:none;
+    font-size:15px;
+}
+
+.action-bar input:focus{
+    border-color:#ff9900;
+}
+
+.action-bar button{
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.action-bar button:first-of-type{
+    background:#007bff;
+}
+
+.action-bar button:first-of-type:hover{
+    background:#005ecb;
+}
+
+.add-btn{
+    background:#28a745;
+}
+
+.add-btn:hover{
+    background:#218838;
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-container{
+    width:95%;
+    margin:auto;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#232f3e;
+}
+
+thead th{
+    color:#fff;
+    padding:16px;
+    text-align:center;
+    font-size:15px;
+}
+
+tbody td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+    background:#fafafa;
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.product-image{
+    width:70px;
+    height:70px;
+    border-radius:8px;
+    object-fit:cover;
+    border:1px solid #ddd;
+}
+
+/* ===========================
+   PRODUCT NAME
+=========================== */
+
+.product-name{
+    font-weight:bold;
+    color:#232f3e;
+}
+
+/* ===========================
+   PRICE
+=========================== */
+
+.price{
+    color:#28a745;
+    font-size:17px;
+    font-weight:bold;
+}
+
+/* ===========================
+   STOCK
+=========================== */
+
+.stock{
+    font-weight:bold;
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.status-active{
+    display:inline-block;
+    padding:6px 14px;
+    background:#28a745;
+    color:#fff;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.status-inactive{
+    display:inline-block;
+    padding:6px 14px;
+    background:#dc3545;
+    color:#fff;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.edit-btn{
+    background:#0d6efd;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-right:6px;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:#0b5ed7;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#bb2d3b;
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination{
+    width:95%;
+    margin:25px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.pagination button{
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    background:#232f3e;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pagination button:hover{
+    background:#1b2531;
+}
+
+.pagination span{
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    min-width:1200px;
+}
+
+.action-bar{
+    flex-direction:column;
+}
+
+.action-bar input,
+.action-bar button{
+    width:100%;
+}
+
+}

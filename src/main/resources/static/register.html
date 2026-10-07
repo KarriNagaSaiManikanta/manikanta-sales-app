@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Manikanta Sales</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+            REGISTER PAGE
+========================================== -->
+
+<section class="login-page">
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <!-- =========================
+                    LEFT SIDE
+            ========================== -->
+
+            <div class="login-left">
+
+                <h1>
+
+                    Join Manikanta Sales
+
+                </h1>
+
+                <p>
+
+                    Create your account and enjoy secure shopping with amazing offers.
+
+                </p>
+
+                <img src="images/register.png"
+                     alt="Register">
+
+            </div>
+
+            <!-- =========================
+                    RIGHT SIDE
+            ========================== -->
+
+            <div class="login-right">
+
+                <h2>
+
+                    Create Account
+
+                </h2>
+
+                <form id="registerForm">
+
+                    <!-- FIRST NAME -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            First Name
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="firstName"
+                                placeholder="Enter First Name"
+                                required>
+
+                    </div>
+
+                    <!-- LAST NAME -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Last Name
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Enter Last Name"
+                                required>
+
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter Email Address"
+                                required>
+
+                    </div>
+
+                    <!-- MOBILE -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Mobile Number
+
+                        </label>
+
+                        <input
+                                type="tel"
+                                id="mobile"
+                                placeholder="Enter Mobile Number"
+                                maxlength="10"
+                                required>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Password
+
+                        </label>
+
+                        <div class="password-box">
+
+                            <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Enter Password"
+                                    required>
+
+                            <span
+                                    class="material-icons"
+                                    id="togglePassword">
+
+                                visibility
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Confirm Password
+
+                        </label>
+
+                        <div class="password-box">
+
+                            <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    placeholder="Confirm Password"
+                                    required>
+
+                            <span
+                                    class="material-icons"
+                                    id="toggleConfirmPassword">
+
+                                visibility
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MESSAGE -->
+
+                    <p id="registerMessage"
+                       class="error-message">
+
+                    </p>
+
+                    <!-- BUTTON -->
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary login-btn"
+                            id="registerBtn">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+                <!-- LOGIN LINK -->
+
+                <div class="register-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/api.js"></script>
+
+<script src="js/register.js"></script>
+
+</body>
+
+</html>

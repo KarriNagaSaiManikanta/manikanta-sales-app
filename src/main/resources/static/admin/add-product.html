@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Manikanta Sales - Add Product
+</title>
+
+
+<link rel="stylesheet" href="../css/admin-product.css">
+<link rel="stylesheet" href="../css/admin-navbar.css">
+
+</head>
+
+
+<body >
+<script src="../js/admin-navbar.js"></script>
+
+
+<div class="header">
+
+
+<h2>
+Manikanta Sales - Add Product
+</h2>
+
+
+<button onclick="backToProducts()">
+Back
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-container">
+
+
+<form id="productForm"
+      enctype="multipart/form-data">
+
+
+
+
+
+<label>
+Product Name
+</label>
+
+<input 
+type="text"
+id="name"
+placeholder="Enter product name"
+required>
+
+
+
+
+
+
+<label>
+Brand
+</label>
+
+<input
+type="text"
+id="brand"
+placeholder="Example: Apple, Samsung, Nike">
+
+
+
+
+
+
+
+<label>
+Description
+</label>
+
+
+<textarea
+id="description"
+placeholder="Product description">
+</textarea>
+
+
+
+
+
+
+
+<label>
+Price
+</label>
+
+
+<input
+type="number"
+id="price"
+placeholder="Original price"
+required>
+
+
+
+
+
+
+
+
+<label>
+Discount Price
+</label>
+
+
+<input
+type="number"
+id="discountPrice"
+placeholder="Offer price">
+
+
+
+
+
+
+
+
+<label>
+Quantity
+</label>
+
+
+<input
+type="number"
+id="quantity"
+placeholder="Stock quantity"
+required>
+
+
+
+
+
+
+
+
+
+<label>
+Category
+</label>
+
+
+<select id="categoryId"
+required>
+
+
+<option value="">
+Select Category
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<label>
+SKU Code
+</label>
+
+
+<input
+type="text"
+id="sku"
+placeholder="Example: IP15-256-BLK">
+
+
+
+
+
+
+
+<label>
+Product Image
+</label>
+
+
+<input
+type="file"
+id="image"
+accept="image/*">
+
+
+
+
+
+
+
+<img 
+id="preview"
+width="150"
+height="150"
+style="
+display:none;
+margin-top:15px;
+object-fit:cover;
+">
+
+
+
+
+
+
+
+
+
+<label>
+Status
+</label>
+
+
+<select id="active">
+
+
+<option value="true">
+Active
+</option>
+
+
+<option value="false">
+Inactive
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+<button
+type="submit"
+class="save-btn">
+
+Save Product
+
+</button>
+
+
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+<script src="../js/admin-auth.js"></script>
+
+<script src="../js/add-product.js"></script>
+
+<script src="../js/theme.js"></script>
+</body>
+
+</html>

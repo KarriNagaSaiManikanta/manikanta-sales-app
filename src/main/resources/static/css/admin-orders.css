@@ -1,0 +1,1414 @@
+/* =========================================================
+   MANIKANTA SALES
+   ADMIN ORDER / RETURN MANAGEMENT
+   FULL RESPONSIVE CSS
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f6fa;
+    color: #212121;
+    overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   ADMIN CONTAINER
+   TOP NAVBAR BELOW 30px GAP
+========================================================= */
+
+.admin-container {
+    width: 100%;
+    min-height: 100vh;
+
+    /*
+       Navbar approximately 60px
+       + 30px gap below navbar
+    */
+    padding: 90px 30px 30px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   ORDER CARD
+========================================================= */
+
+.order-card {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #eef0f4;
+    border-radius: 15px;
+
+    padding: 20px;
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s ease;
+
+    overflow: hidden;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   PRODUCT SECTION
+========================================================= */
+
+.product {
+    width: 35%;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    min-width: 0;
+}
+
+.product img {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+
+    object-fit: contain;
+
+    padding: 8px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-info h3,
+.product-info h4 {
+    color: #1f2937;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+
+    word-break: break-word;
+}
+
+.product-info p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 5px;
+
+    word-break: break-word;
+}
+
+.product-name {
+    color: #1f2937;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    word-break: break-word;
+}
+
+.product-price {
+    color: #111827;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   CUSTOMER SECTION
+========================================================= */
+
+.customer {
+    width: 35%;
+
+    min-width: 0;
+
+    padding: 5px 0;
+}
+
+.customer h3,
+.customer h4 {
+    color: #172554;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.customer p {
+    color: #475569;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 5px;
+
+    word-break: break-word;
+}
+
+.customer strong {
+    color: #334155;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ORDER STATUS SECTION
+========================================================= */
+
+.order-status {
+    width: 20%;
+
+    min-width: 170px;
+
+    padding: 5px 0;
+}
+
+.order-status h3,
+.order-status h4 {
+    color: #172554;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.order-status p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 8px;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   NORMAL STATUS
+========================================================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 15px;
+
+    background: #28a745;
+
+    color: #ffffff;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   GENERAL BUTTON
+========================================================= */
+
+button {
+    margin-top: 20px;
+
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2874f0;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background: #1d5fd1;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ADMIN RETURN MANAGEMENT
+========================================================= */
+
+.admin-return-section {
+    width: 100%;
+
+    margin-top: 20px;
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.admin-return-section h3 {
+    margin: 0 0 15px;
+
+    color: #172554;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   RETURN STATUS
+========================================================= */
+
+.return-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    max-width: 100%;
+}
+
+
+/* NONE */
+
+.return-status.none {
+    background: #f1f5f9;
+
+    color: #475569;
+
+    border: 1px solid #cbd5e1;
+}
+
+
+/* REQUESTED */
+
+.return-status.requested {
+    background: #fef3c7;
+
+    color: #92400e;
+
+    border: 1px solid #fcd34d;
+}
+
+
+/* APPROVED */
+
+.return-status.approved {
+    background: #dcfce7;
+
+    color: #166534;
+
+    border: 1px solid #86efac;
+}
+
+
+/* REJECTED */
+
+.return-status.rejected {
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    border: 1px solid #fca5a5;
+}
+
+
+/* RETURNED */
+
+.return-status.returned {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    border: 1px solid #93c5fd;
+}
+
+
+/* =========================================================
+   RETURN ACTIONS
+========================================================= */
+
+.return-actions {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+}
+
+.approve-return-btn,
+.reject-return-btn,
+.complete-return-btn {
+    min-height: 40px;
+
+    margin: 0;
+
+    padding: 10px 17px;
+
+    border: none;
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* APPROVE */
+
+.approve-return-btn {
+    background: #16a34a;
+}
+
+.approve-return-btn:hover {
+    background: #15803d;
+}
+
+
+/* REJECT */
+
+.reject-return-btn {
+    background: #dc2626;
+}
+
+.reject-return-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* COMPLETE */
+
+.complete-return-btn {
+    background: #2563eb;
+}
+
+.complete-return-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================================================
+   RETURN REASON
+========================================================= */
+
+.return-reason-box {
+    width: 100%;
+
+    margin-top: 14px;
+    padding: 14px 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.return-reason-box strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.return-reason-box p {
+    margin: 0;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   ORDER DETAILS
+========================================================= */
+
+.order-details {
+    width: 100%;
+
+    margin-top: 15px;
+    padding-top: 15px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.order-details p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 5px;
+
+    word-break: break-word;
+}
+
+.order-details strong {
+    color: #334155;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS
+========================================================= */
+
+.payment-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.payment-status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.payment-status.paid {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.payment-status.refunded {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.payment-status.failed {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+
+/* =========================================================
+   ORDER STATUS COLORS
+========================================================= */
+
+.order-status-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.order-status-badge.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.order-status-badge.confirmed {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.order-status-badge.processing {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.order-status-badge.shipped {
+    background: #cffafe;
+    color: #155e75;
+}
+
+.order-status-badge.out-for-delivery {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.order-status-badge.delivered {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.order-status-badge.cancelled {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .admin-container {
+        padding: 85px 25px 25px;
+    }
+
+    .order-card {
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .product {
+        width: 36%;
+        gap: 15px;
+    }
+
+    .customer {
+        width: 34%;
+    }
+
+    .order-status {
+        width: 24%;
+        min-width: 150px;
+    }
+
+    .product img {
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   992px
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .admin-container {
+        padding: 80px 20px 20px;
+    }
+
+    .order-card {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+    .product {
+        width: 100%;
+
+        grid-column: 1 / 2;
+    }
+
+    .customer {
+        width: 100%;
+
+        grid-column: 2 / 3;
+    }
+
+    .order-status {
+        width: 100%;
+
+        min-width: 0;
+
+        grid-column: 1 / -1;
+
+        padding-top: 15px;
+
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .admin-return-section {
+        grid-column: 1 / -1;
+
+        margin-top: 5px;
+    }
+
+    .return-actions {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------------------
+       CONTAINER
+    ----------------------------------------- */
+
+    .admin-container {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 75px 15px 15px;
+
+        margin: 0 auto;
+    }
+
+
+    /* -----------------------------------------
+       ORDER CARD
+    ----------------------------------------- */
+
+    .order-card {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 18px;
+
+        padding: 16px;
+
+        margin: 0 auto 18px;
+
+        border-radius: 13px;
+
+        transform: none;
+    }
+
+    .order-card:hover {
+        transform: none;
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* -----------------------------------------
+       PRODUCT
+    ----------------------------------------- */
+
+    .product {
+        width: 100%;
+
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 14px;
+
+        padding-bottom: 16px;
+
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .product img {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+
+        padding: 6px;
+
+        border-radius: 9px;
+    }
+
+    .product-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .product-info h3,
+    .product-info h4 {
+        font-size: 16px;
+
+        margin-bottom: 6px;
+    }
+
+    .product-info p {
+        font-size: 13px;
+
+        line-height: 1.45;
+    }
+
+    .product-name {
+        font-size: 15px;
+    }
+
+    .product-price {
+        font-size: 14px;
+
+        margin-top: 5px;
+    }
+
+
+    /* -----------------------------------------
+       CUSTOMER
+    ----------------------------------------- */
+
+    .customer {
+        width: 100%;
+
+        padding: 0 0 16px;
+
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .customer h3,
+    .customer h4 {
+        font-size: 16px;
+
+        margin-bottom: 9px;
+    }
+
+    .customer p {
+        font-size: 13px;
+
+        line-height: 1.5;
+
+        margin-bottom: 4px;
+    }
+
+
+    /* -----------------------------------------
+       ORDER STATUS
+    ----------------------------------------- */
+
+    .order-status {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 0;
+
+        border-top: none;
+    }
+
+    .order-status h3,
+    .order-status h4 {
+        font-size: 16px;
+
+        margin-bottom: 10px;
+    }
+
+    .order-status p {
+        font-size: 13px;
+    }
+
+    .status {
+        padding: 7px 13px;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN SECTION
+    ----------------------------------------- */
+
+    .admin-return-section {
+        width: 100%;
+
+        margin-top: 0;
+
+        padding: 15px;
+
+        border-radius: 10px;
+    }
+
+    .admin-return-section h3 {
+        font-size: 16px;
+
+        margin-bottom: 12px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN STATUS
+    ----------------------------------------- */
+
+    .return-status {
+        padding: 8px 13px;
+
+        font-size: 12px;
+
+        max-width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       RETURN REASON
+    ----------------------------------------- */
+
+    .return-reason-box {
+        width: 100%;
+
+        margin-top: 12px;
+
+        padding: 12px 13px;
+
+        border-radius: 8px;
+    }
+
+    .return-reason-box strong {
+        font-size: 12px;
+
+        margin-bottom: 5px;
+    }
+
+    .return-reason-box p {
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------
+       RETURN BUTTONS
+    ----------------------------------------- */
+
+    .return-actions {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        margin-top: 12px;
+    }
+
+    .approve-return-btn,
+    .reject-return-btn,
+    .complete-return-btn {
+        width: 100%;
+
+        min-height: 42px;
+
+        padding: 10px 15px;
+
+        margin: 0;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       ORDER DETAILS
+    ----------------------------------------- */
+
+    .order-details {
+        margin-top: 12px;
+
+        padding-top: 12px;
+    }
+
+    .order-details p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* -----------------------------------------
+       CONTAINER
+    ----------------------------------------- */
+
+    .admin-container {
+        width: 100%;
+
+        padding: 70px 10px 10px;
+
+        margin: 0 auto;
+    }
+
+
+    /* -----------------------------------------
+       ORDER CARD
+    ----------------------------------------- */
+
+    .order-card {
+        width: 100%;
+
+        padding: 13px;
+
+        margin-bottom: 14px;
+
+        gap: 14px;
+
+        border-radius: 12px;
+    }
+
+
+    /* -----------------------------------------
+       PRODUCT
+    ----------------------------------------- */
+
+    .product {
+        gap: 11px;
+
+        padding-bottom: 13px;
+    }
+
+    .product img {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+
+        padding: 5px;
+
+        border-radius: 8px;
+    }
+
+    .product-info h3,
+    .product-info h4 {
+        font-size: 14px;
+
+        margin-bottom: 5px;
+    }
+
+    .product-info p {
+        font-size: 12px;
+
+        line-height: 1.4;
+    }
+
+    .product-name {
+        font-size: 13px;
+    }
+
+    .product-price {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       CUSTOMER
+    ----------------------------------------- */
+
+    .customer {
+        padding-bottom: 13px;
+    }
+
+    .customer h3,
+    .customer h4 {
+        font-size: 14px;
+
+        margin-bottom: 7px;
+    }
+
+    .customer p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------
+       ORDER STATUS
+    ----------------------------------------- */
+
+    .order-status h3,
+    .order-status h4 {
+        font-size: 14px;
+
+        margin-bottom: 8px;
+    }
+
+    .order-status p {
+        font-size: 12px;
+    }
+
+    .status {
+        padding: 6px 11px;
+
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN SECTION
+    ----------------------------------------- */
+
+    .admin-return-section {
+        padding: 12px;
+
+        border-radius: 9px;
+    }
+
+    .admin-return-section h3 {
+        font-size: 14px;
+
+        margin-bottom: 10px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN STATUS
+    ----------------------------------------- */
+
+    .return-status {
+        padding: 7px 11px;
+
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN REASON
+    ----------------------------------------- */
+
+    .return-reason-box {
+        margin-top: 10px;
+
+        padding: 10px 11px;
+    }
+
+    .return-reason-box strong {
+        font-size: 11px;
+    }
+
+    .return-reason-box p {
+        font-size: 12px;
+
+        line-height: 1.45;
+    }
+
+
+    /* -----------------------------------------
+       RETURN BUTTONS
+    ----------------------------------------- */
+
+    .return-actions {
+        gap: 7px;
+
+        margin-top: 10px;
+    }
+
+    .approve-return-btn,
+    .reject-return-btn,
+    .complete-return-btn {
+        width: 100%;
+
+        min-height: 40px;
+
+        padding: 9px 12px;
+
+        font-size: 12px;
+
+        border-radius: 6px;
+    }
+
+
+    /* -----------------------------------------
+       PAYMENT STATUS
+    ----------------------------------------- */
+
+    .payment-status {
+        padding: 6px 10px;
+
+        font-size: 10px;
+    }
+
+    .order-status-badge {
+        padding: 6px 10px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       ORDER DETAILS
+    ----------------------------------------- */
+
+    .order-details {
+        margin-top: 10px;
+
+        padding-top: 10px;
+    }
+
+    .order-details p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+    /* -----------------------------------------
+       CONTAINER
+    ----------------------------------------- */
+
+    .admin-container {
+        width: 100%;
+
+        padding: 68px 8px 8px;
+    }
+
+
+    /* -----------------------------------------
+       ORDER CARD
+    ----------------------------------------- */
+
+    .order-card {
+        width: 100%;
+
+        padding: 11px;
+
+        gap: 12px;
+
+        border-radius: 10px;
+    }
+
+
+    /* -----------------------------------------
+       PRODUCT
+    ----------------------------------------- */
+
+    .product {
+        gap: 9px;
+    }
+
+    .product img {
+        width: 65px;
+        height: 65px;
+        min-width: 65px;
+    }
+
+    .product-info h3,
+    .product-info h4 {
+        font-size: 13px;
+    }
+
+    .product-info p {
+        font-size: 11px;
+    }
+
+    .product-name {
+        font-size: 12px;
+    }
+
+    .product-price {
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+       CUSTOMER
+    ----------------------------------------- */
+
+    .customer h3,
+    .customer h4 {
+        font-size: 13px;
+    }
+
+    .customer p {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------
+       STATUS
+    ----------------------------------------- */
+
+    .order-status h3,
+    .order-status h4 {
+        font-size: 13px;
+    }
+
+    .order-status p {
+        font-size: 11px;
+    }
+
+    .status {
+        padding: 6px 10px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN SECTION
+    ----------------------------------------- */
+
+    .admin-return-section {
+        padding: 10px;
+    }
+
+    .admin-return-section h3 {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN STATUS
+    ----------------------------------------- */
+
+    .return-status {
+        padding: 6px 9px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       RETURN REASON
+    ----------------------------------------- */
+
+    .return-reason-box {
+        padding: 9px 10px;
+    }
+
+    .return-reason-box strong {
+        font-size: 10px;
+    }
+
+    .return-reason-box p {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------
+       BUTTONS
+    ----------------------------------------- */
+
+    .approve-return-btn,
+    .reject-return-btn,
+    .complete-return-btn {
+        width: 100%;
+
+        min-height: 38px;
+
+        padding: 8px 10px;
+
+        font-size: 11px;
+    }
+}

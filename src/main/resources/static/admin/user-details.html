@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0">
+
+    <title>User Details</title>
+
+    <link rel="stylesheet"
+          href="../css/user-details.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+<link rel="stylesheet" href="../css/admin-navbar.css">
+</head>
+
+<body class="dark">
+<script src="../js/admin-navbar.js"></script>
+<div class="container">
+
+    <div class="header">
+
+        <button class="back-btn"
+                onclick="history.back()">
+            ← Back
+        </button>
+
+        <h2>User Details</h2>
+
+    </div>
+
+    <div class="profile-card">
+
+        <img id="profileImage"
+             src="../images/user.png">
+
+        <h2 id="name">Loading...</h2>
+
+        <p id="email"></p>
+
+        <span id="status"
+              class="status">
+        </span>
+
+    </div>
+
+    <div class="details-card">
+
+        <table>
+
+            <tr>
+                <td>User ID</td>
+                <td id="userId"></td>
+            </tr>
+
+            <tr>
+                <td>First Name</td>
+                <td id="firstName"></td>
+            </tr>
+
+            <tr>
+                <td>Last Name</td>
+                <td id="lastName"></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td id="userEmail"></td>
+            </tr>
+
+            <tr>
+                <td>Mobile</td>
+                <td id="mobile"></td>
+            </tr>
+
+            <tr>
+                <td>Role</td>
+                <td id="role"></td>
+            </tr>
+
+            <tr>
+                <td>Account</td>
+                <td id="accountStatus"></td>
+            </tr>
+
+            <tr>
+                <td>Email Verified</td>
+                <td id="verified"></td>
+            </tr>
+
+            <tr>
+                <td>Created</td>
+                <td id="created"></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="action-buttons">
+
+    <button id="blockBtn" class="block">
+        Block User
+    </button>
+
+    <button id="unblockBtn"
+            class="unblock"
+            style="display:none;">
+        Unblock User
+    </button>
+
+    <button id="deleteBtn" class="delete">
+        Delete User
+    </button>
+
+</div>
+</div>
+<script src="../js/admin-auth.js"></script>
+<script src="../js/user-details.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+</html>

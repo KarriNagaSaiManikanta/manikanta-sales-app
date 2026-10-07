@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manikanta Sales | Product Details</title>
+    
+<link rel="stylesheet" href="/css/uproducts.css">
+
+<link rel="stylesheet"
+      href="../css/user-dashboard.css">
+
+
+    <link rel="stylesheet"
+          href="/css/unav.css">
+
+    
+
+    <link rel="stylesheet"
+          href="/css/uproduct-details.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+</head>
+
+<body data-page="product-details">
+
+<!-- ===========================
+        USER TOP NAVBAR
+=========================== -->
+
+
+
+
+
+   <div id="navbar-container"></div>
+
+
+
+
+
+<!-- ===========================
+        PRODUCT DETAILS
+=========================== -->
+
+<section class="product-section">
+
+    <!-- LEFT -->
+
+    <div class="left-side">
+
+        <div class="main-image">
+
+            <img
+                    id="productImage"
+                    src="/images/no-image.png"
+                    alt="Product">
+
+        </div>
+
+        <div class="thumb-images">
+
+            <img id="thumb1"
+                 src="/images/no-image.png">
+
+            <img id="thumb2"
+                 src="/images/no-image.png">
+
+            <img id="thumb3"
+                 src="/images/no-image.png">
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="right-side">
+
+        <span class="offer-badge">
+
+            20% OFF
+
+        </span>
+
+        <h1 id="productName">
+
+            Product Name
+
+        </h1>
+
+        <div class="rating">
+
+            ⭐⭐⭐⭐⭐
+            <span>(245 Ratings)</span>
+
+        </div>
+
+        <h2 class="price">
+
+            ₹ <span id="productPrice">0</span>
+
+        </h2>
+
+        <p>
+
+            <strong>Brand :</strong>
+
+            <span id="productBrand"></span>
+
+        </p>
+
+        <p>
+
+            <strong>Category :</strong>
+
+            <span id="productCategory"></span>
+
+        </p>
+
+        <p>
+
+            <strong>Availability :</strong>
+
+            <span class="stock" id="productQuantity">
+
+                0
+
+            </span>
+            
+
+        </p>
+
+        <!-- Quantity -->
+
+        <div class="qty-box">
+
+            <button onclick="decreaseQty()">
+
+                -
+
+            </button>
+
+            <input
+                    type="text"
+                    id="qty"
+                    value="1"
+                    readonly>
+
+            <button onclick="increaseQty()">
+
+                +
+
+            </button>
+
+        </div>
+
+        <!-- Buttons -->
+<div class="action-buttons">
+
+
+<button
+class="cart-btn"
+onclick="addToCart()">
+
+🛒 Add to Cart
+
+</button>
+
+
+
+<button
+class="wish-btn"
+onclick="addWishlist()">
+
+❤️ Wishlist
+
+</button>
+
+
+</div>
+    </div>
+
+</section>
+
+
+<!-- ===========================
+      DESCRIPTION
+=========================== -->
+
+<section class="description">
+
+    <h2>
+
+        Product Description
+
+    </h2>
+
+    <p id="productDescription">
+
+        Loading...
+
+    </p>
+
+</section>
+
+
+<!-- ===========================
+      SPECIFICATIONS
+=========================== -->
+
+<section class="specifications">
+
+    <h2>
+
+        Specifications
+
+    </h2>
+
+    <table>
+
+        <tr>
+
+            <th>Brand</th>
+
+            <td id="specBrand"></td>
+
+        </tr>
+
+        <tr>
+
+            <th>Category</th>
+
+            <td id="specCategory"></td>
+
+        </tr>
+
+        <tr>
+
+            <th>Price</th>
+
+            <td id="specPrice"></td>
+
+        </tr>
+
+        <tr>
+
+            <th>Stock</th>
+
+            <td id="specStock"></td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- ===========================
+      RELATED PRODUCTS
+=========================== -->
+
+<section class="related">
+
+    <h2>
+
+        Related Products
+
+    </h2>
+
+    <div id="relatedProducts"
+         class="related-grid">
+
+    </div>
+
+</section>
+
+<script src="/js/cart-wishlist.js"></script>
+
+<script src="../js/userdash.js"></script>
+<script src="../js/usernavbar.js"></script>
+<script src="/js/uproduct-details.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+
+</html>

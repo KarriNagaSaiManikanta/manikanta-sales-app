@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart | Manikanta Sales</title>
+
+    <link rel="stylesheet" href="/css/cart.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+<link rel="stylesheet" href="/css/uproducts.css">
+</head>
+
+<body data-page="cart">
+
+<!-- ===========================================
+                HEADER
+=========================================== -->
+
+  <div id="navbar-container"></div>
+
+
+
+<!-- ===========================================
+                CART SECTION
+=========================================== -->
+
+<div class="cart-container">
+
+    <!-- =========================
+            LEFT SIDE
+    ========================== -->
+
+    <div class="cart-left">
+
+        <!-- SELECT ALL -->
+
+        <div class="select-all">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="selectAll"
+                    checked
+                    onchange="selectAllProducts(this)">
+
+                Select All Items
+
+            </label>
+
+        </div>
+
+        <!-- CART ITEMS -->
+
+        <div id="cartItems">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+            RIGHT SIDE
+    ========================== -->
+
+    <div class="cart-right">
+
+        <h3>Price Details</h3>
+
+        <hr>
+
+        <div class="price-row">
+
+            <span>Total Items</span>
+
+            <span id="totalItems">0</span>
+
+        </div>
+
+        <div class="price-row">
+
+            <span>Total Price</span>
+
+            <span id="totalPrice">₹0</span>
+
+        </div>
+
+        <div class="price-row">
+
+            <span>Delivery</span>
+
+            <span style="color:green;">
+                FREE
+            </span>
+
+        </div>
+
+        <hr>
+
+        <div class="price-row total">
+
+            <span>Grand Total</span>
+
+            <span id="grandTotal">
+                ₹0
+            </span>
+
+        </div>
+
+        <button
+    class="checkout-btn"
+    onclick="checkout()">
+    Proceed To Checkout
+</button>
+
+        <button
+            class="clear-btn"
+            onclick="clearCart()">
+
+            Clear Cart
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="/js/cart.js"></script>
+
+<script>
+
+function goDashboard(){
+
+    window.location.href="/index.html";
+
+}
+
+</script>
+<script src="/js/auth.js"></script>
+<script src="../js/usernavbar.js"></script>
+</body>
+</html>

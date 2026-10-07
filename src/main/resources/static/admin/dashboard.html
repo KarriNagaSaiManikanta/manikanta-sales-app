@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard | Manikanta Sales</title>
+
+
+    <!-- ==========================
+         GLOBAL CSS
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+
+    <!-- ==========================
+         MATERIAL ICONS
+    ========================== -->
+
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     ADMIN CONTAINER
+===================================== -->
+
+<div class="admin-container">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ===================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <h2>
+                Manikanta Sales
+            </h2>
+
+            <p>
+                Admin Panel
+            </p>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <ul class="sidebar-menu">
+
+
+            <!-- DASHBOARD -->
+
+            <li class="active">
+
+                <a href="dashboard.html">
+
+                    <span class="material-icons">
+                        dashboard
+                    </span>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+
+            <!-- PRODUCTS -->
+
+            <li>
+
+                <a href="products.html">
+
+                    <span class="material-icons">
+                        inventory_2
+                    </span>
+
+                    Products
+
+                </a>
+
+            </li>
+
+
+            <!-- ADD PRODUCT -->
+
+            <li>
+
+                <a href="add-product.html">
+
+                    <span class="material-icons">
+                        add_box
+                    </span>
+
+                    Add Product
+
+                </a>
+
+            </li>
+
+
+            <!-- CATEGORIES -->
+
+            <li>
+
+                <a href="categories.html">
+
+                    <span class="material-icons">
+                        category
+                    </span>
+
+                    Categories
+
+                </a>
+
+            </li>
+
+
+            <!-- ORDERS -->
+
+            <li>
+
+                <a href="orders.html">
+
+                    <span class="material-icons">
+                        shopping_cart
+                    </span>
+
+                    Orders
+
+                </a>
+
+            </li>
+
+
+            <!-- USERS -->
+
+            <li>
+
+                <a href="users.html">
+
+                    <span class="material-icons">
+                        people
+                    </span>
+
+                    Users
+
+                </a>
+
+            </li>
+
+
+            <!-- PROFILE -->
+
+            <li>
+
+                <a href="profile.html">
+
+                    <span class="material-icons">
+                        person
+                    </span>
+
+                    Profile
+
+                </a>
+
+            </li>
+
+
+            <!-- LOGOUT -->
+
+            <li>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+
+                    <span class="material-icons">
+                        logout
+                    </span>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ===================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================
+             TOP NAVBAR
+        ===================================== -->
+
+        <header class="top-navbar">
+
+
+            <!-- SEARCH -->
+
+            <div class="top-left">
+
+                <div class="search-box">
+
+                    <h1>MANIKANTA Dashboard</h1>
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="top-right">
+
+
+                <!-- NOTIFICATION -->
+
+                <div class="notification">
+
+                    <span class="material-icons">
+                        notifications
+                    </span>
+
+                    <span class="badge">
+                        5
+                    </span>
+
+                </div>
+
+
+                <!-- ADMIN PROFILE -->
+
+                <div class="admin-profile">
+
+
+                    <img
+                        id="adminProfileImage"
+                        alt="Admin Profile"
+                    >
+
+
+                    <div>
+
+                        <h4 id="adminName">
+                            Loading...
+                        </h4>
+
+
+                        <small id="adminEmail">
+                            Loading...
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================
+             DASHBOARD CONTENT
+        ===================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- =====================================
+                 DASHBOARD CARDS
+            ===================================== -->
+
+            <div class="dashboard-cards">
+
+
+                <!-- =================================
+                     TOTAL PRODUCTS
+                ================================= -->
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-icon">
+
+                        <span class="material-icons">
+                            inventory_2
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content"
+                        onclick="openProducts()"
+                    >
+
+                        <h4>
+                            Total Products
+                        </h4>
+
+                        <h2 id="totalProducts">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TOTAL CATEGORIES
+                ================================= -->
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-icon">
+
+                        <span class="material-icons">
+                            category
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content"
+                        onclick="openCategories()"
+                    >
+
+                        <h4>
+                            Total Categories
+                        </h4>
+
+                        <h2 id="totalCategories">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TOTAL USERS
+                ================================= -->
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-icon">
+
+                        <span class="material-icons">
+                            people
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content"
+                        onclick="openUsers()"
+                    >
+
+                        <h4>
+                            Total Users
+                        </h4>
+
+                        <h2 id="totalUsers">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TOTAL ORDERS
+                ================================= -->
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-icon">
+
+                        <span class="material-icons">
+                            shopping_cart
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content"
+                        onclick="openOrders()"
+                    >
+
+                        <h4>
+                            Total Orders
+                        </h4>
+
+                        <h2 id="totalOrders">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TOTAL REVENUE
+                ================================= -->
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-icon">
+
+                        <span class="material-icons">
+                            payments
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content"
+                        onclick="openRevenue()"
+                    >
+
+                        <h4>
+                            Total Revenue
+                        </h4>
+
+                        <h2 id="totalRevenue">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 RECENT ORDERS TABLE
+            ===================================== -->
+
+            <div class="dashboard-table">
+
+
+                <div class="table-header">
+
+                    <h3>
+                        Recent Orders
+                    </h3>
+
+                </div>
+
+
+                <table>
+
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Order ID
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentOrders">
+
+                    <tr>
+
+                        <td colspan="4">
+                            No Orders Available
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 RETURN ORDERS TABLE
+            ===================================== -->
+
+            <div class="dashboard-table return-orders-table">
+
+
+                <div class="table-header">
+
+                    <h3>
+                        Return Orders
+                    </h3>
+
+
+                    
+
+                </div>
+
+
+                <table>
+
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Order ID
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Return Status
+                        </th>
+
+                       
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="returnOrders">
+
+                    <tr>
+
+                        <td colspan="4">
+                            No Return Orders
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script src="../js/api.js"></script>
+
+<script src="../js/admin.js"></script>
+
+<script src="../js/dashboard.js"></script>
+
+<script src="../js/theme.js"></script>
+<script src="../js/admin-auth.js"></script>
+
+</body>
+
+</html>

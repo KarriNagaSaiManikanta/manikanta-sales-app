@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>Edit Category | Manikanta Sales</title>
+
+<link rel="stylesheet" href="../css/admin-navbar.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/form.css">
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+
+
+</head>
+
+
+<body >
+<script src="../js/admin-navbar.js"></script>
+
+
+<div class="admin-container">
+
+
+
+
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+<script src="../js/admin-auth.js"></script>
+
+<aside class="sidebar">
+
+
+<div class="sidebar-logo">
+
+<h2>
+Manikanta Sales
+</h2>
+
+<p>
+Admin Panel
+</p>
+
+
+</div>
+
+
+
+
+
+<ul class="sidebar-menu">
+
+
+
+<li>
+
+<a href="dashboard.html">
+
+<span class="material-icons">
+dashboard
+</span>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+
+
+<li class="active">
+
+<a href="categories.html">
+
+<span class="material-icons">
+category
+</span>
+
+Categories
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="products.html">
+
+<span class="material-icons">
+inventory_2
+</span>
+
+Products
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="orders.html">
+
+<span class="material-icons">
+shopping_cart
+</span>
+
+Orders
+
+</a>
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="#"
+onclick="logout()">
+
+<span class="material-icons">
+logout
+</span>
+
+Logout
+
+</a>
+
+</li>
+
+
+
+
+</ul>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- MAIN -->
+<!-- ========================= -->
+
+
+<main class="main-content">
+
+
+
+
+
+<header class="top-navbar">
+
+
+<div>
+
+
+<h2>
+Edit Category
+</h2>
+
+
+<p>
+Update Category Details
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-info">
+
+
+<span class="material-icons">
+account_circle
+</span>
+
+
+<span id="adminEmail"></span>
+
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<div class="form-container">
+
+
+
+
+
+<h2>
+Edit Category
+</h2>
+
+
+
+
+
+
+<form id="editCategoryForm">
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Category Name
+</label>
+
+
+<input
+
+type="text"
+
+id="name"
+
+placeholder="Enter Category Name"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Description
+</label>
+
+
+
+<textarea
+
+id="description"
+
+rows="5"
+
+placeholder="Enter Description">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Category Image
+</label>
+
+
+
+<input
+
+type="file"
+
+id="image"
+
+accept="image/*"
+
+onchange="previewImage(event)">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="image-preview">
+
+
+<img
+
+id="preview"
+
+src="../images/no-image.png"
+
+alt="Category Image"
+
+width="150"
+
+height="150"
+
+style="
+object-fit:cover;
+border-radius:10px;
+margin-top:15px;
+">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Status
+</label>
+
+
+
+<div class="checkbox-group">
+
+
+<input
+
+type="checkbox"
+
+id="active"
+
+checked>
+
+
+
+<label for="active">
+
+Active
+
+</label>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-buttons">
+
+
+<button
+
+type="button"
+
+class="btn-secondary"
+
+onclick="history.back()">
+
+Cancel
+
+</button>
+
+
+
+
+
+
+
+<button
+
+type="submit"
+
+class="btn-primary">
+
+
+Update Category
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- LOADER -->
+<!-- ========================= -->
+
+
+<div id="loader"
+style="display:none;">
+
+
+<div class="spinner"></div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- TOAST -->
+<!-- ========================= -->
+
+
+<div id="toast"
+class="toast">
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="../js/api.js"></script>
+
+<script src="../js/admin.js"></script>
+
+<script src="../js/edit-category.js"></script>
+
+<script src="../js/theme.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Revenue Dashboard</title>
+
+
+    <!-- ADMIN NAVBAR -->
+    <link
+        rel="stylesheet"
+        href="../css/admin-navbar.css"
+    >
+
+
+    <!-- REVENUE CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/revenue.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ADMIN NAVBAR
+    ========================== -->
+
+    <script src="../js/admin-navbar.js"></script>
+
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
+
+    <main class="revenue-container">
+
+
+        <!-- =========================
+             PAGE HEADER
+        ========================== -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    ADMIN ANALYTICS
+                </span>
+
+                <h1>
+                    Revenue Dashboard
+                </h1>
+
+                <p>
+                    Monitor your sales, revenue and
+                    payment performance.
+                </p>
+
+            </div>
+
+
+            <div class="header-date">
+
+                <span>
+                    📊 Sales Overview
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             REVENUE SUMMARY
+        ========================== -->
+
+        <section class="summary-cards">
+
+
+            <!-- TOTAL REVENUE -->
+
+            <div class="revenue-card total">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        ₹
+                    </div>
+
+                    <span class="card-badge">
+                        Total
+                    </span>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h4>
+                        Total Revenue
+                    </h4>
+
+                    <h2 id="totalRevenue">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Overall sales revenue
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TODAY -->
+
+            <div class="revenue-card today">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        📅
+                    </div>
+
+                    <span class="card-badge">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h4>
+                        Today's Revenue
+                    </h4>
+
+                    <h2 id="todayRevenue">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Revenue generated today
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MONTH -->
+
+            <div class="revenue-card month">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        📈
+                    </div>
+
+                    <span class="card-badge">
+                        Monthly
+                    </span>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h4>
+                        This Month Revenue
+                    </h4>
+
+                    <h2 id="monthRevenue">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Current month performance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ORDERS -->
+
+            <div class="revenue-card orders">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        🛒
+                    </div>
+
+                    <span class="card-badge">
+                        Orders
+                    </span>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h4>
+                        Total Orders
+                    </h4>
+
+                    <h2 id="totalOrders">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Orders received
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AVERAGE -->
+
+            <div class="revenue-card average">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                    <span class="card-badge">
+                        Average
+                    </span>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h4>
+                        Average Order Value
+                    </h4>
+
+                    <h2 id="averageOrder">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Average revenue per order
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             REVENUE ANALYTICS
+        ========================== -->
+
+        <section class="chart-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Revenue Analytics
+                    </h2>
+
+                    <p>
+                        Track your revenue performance
+                        over time.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-filter">
+
+                    <label for="chartType">
+                        View
+                    </label>
+
+                    <select
+                        id="chartType"
+                    >
+
+                        <option value="daily">
+                            Daily
+                        </option>
+
+                        <option value="weekly">
+                            Weekly
+                        </option>
+
+                        <option value="monthly">
+                            Monthly
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="chart-container">
+
+                <canvas
+                    id="revenueChart"
+                ></canvas>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             LOWER GRID
+        ========================== -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- =========================
+                 RECENT ORDERS
+            ========================== -->
+
+            <section class="orders-section">
+
+
+                <div class="section-header compact">
+
+                    <div>
+
+                        <span class="section-label">
+                            ORDERS
+                        </span>
+
+                        <h2>
+                            Recent Orders
+                        </h2>
+
+                    </div>
+
+
+                    <span class="section-icon">
+                        🛍️
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Order ID
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Payment
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="orderTable">
+
+                            <tr>
+
+                                <td colspan="6">
+
+                                    Loading orders...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 PAYMENT STATUS
+            ========================== -->
+
+            <section class="payment-section">
+
+
+                <div class="section-header compact">
+
+                    <div>
+
+                        <span class="section-label">
+                            PAYMENTS
+                        </span>
+
+                        <h2>
+                            Payment Status
+                        </h2>
+
+                    </div>
+
+
+                    <span class="section-icon">
+                        💳
+                    </span>
+
+                </div>
+
+
+
+                <div class="payment-status">
+
+
+                    <!-- PAID -->
+
+                    <div class="status-card paid-card">
+
+                        <div class="payment-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Paid
+                            </span>
+
+                            <h3
+                                class="paid"
+                            >
+                                0
+                            </h3>
+
+                            <small>
+                                Successful payments
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PENDING -->
+
+                    <div class="status-card pending-card">
+
+                        <div class="payment-icon">
+                            ⏳
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Pending
+                            </span>
+
+                            <h3
+                                class="pending"
+                            >
+                                0
+                            </h3>
+
+                            <small>
+                                Awaiting payment
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FAILED -->
+
+                    <div class="status-card failed-card">
+
+                        <div class="payment-icon">
+                            !
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Failed
+                            </span>
+
+                            <h3
+                                class="failed"
+                            >
+                                0
+                            </h3>
+
+                            <small>
+                                Failed transactions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         CHART JS
+    ========================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- =========================
+         REVENUE JS
+    ========================== -->
+
+    <script src="../js/revenue.js"></script>
+
+
+    <!-- =========================
+         THEME
+    ========================== -->
+
+    <script src="../js/theme.js"></script>
+<script src="../js/admin-auth.js"></script>
+
+</body>
+
+</html>

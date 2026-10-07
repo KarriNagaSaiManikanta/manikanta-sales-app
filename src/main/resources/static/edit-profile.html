@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile | Manikanta Sales</title>
+<link rel="stylesheet" href="../css/edit-profile.css">
+<link rel="stylesheet" href="../css/edit-profile.css">
+    <link rel="stylesheet" href="css/edit-profile.css">
+
+</head>
+
+
+<body >
+
+
+<div class="profile-container">
+
+
+    <div class="profile-card">
+
+
+        <h2>Edit Profile</h2>
+
+
+        <!-- Profile Image -->
+
+        <div class="image-box">
+
+            <img id="profilePreview"
+                 src="images/admin.png"
+                 class="profile-image"
+                 alt="Profile Image">
+
+
+            <input type="file"
+                   id="profileImage"
+                   accept="image/*"
+                   onchange="previewImage(event)">
+
+        </div>
+
+
+
+        <!-- First Name -->
+
+        <div class="form-group">
+
+            <label>First Name</label>
+
+            <input type="text"
+                   id="firstName"
+                   placeholder="Enter first name">
+
+        </div>
+
+
+
+        <!-- Last Name -->
+
+        <div class="form-group">
+
+            <label>Last Name</label>
+
+            <input type="text"
+                   id="lastName"
+                   placeholder="Enter last name">
+
+        </div>
+
+
+
+        <!-- Mobile -->
+
+        <div class="form-group">
+
+            <label>Mobile Number</label>
+
+            <input type="text"
+                   id="mobile"
+                   maxlength="10"
+                   placeholder="Enter mobile number">
+
+        </div>
+
+
+
+
+        <!-- Email -->
+
+        <div class="form-group">
+
+            <label>Email</label>
+
+            <input type="email"
+                   id="email"
+                   readonly>
+
+        </div>
+
+
+
+        <!-- Role -->
+
+        <div class="form-group">
+
+            <label>Role</label>
+
+            <input type="text"
+                   id="role"
+                   readonly>
+
+        </div>
+
+
+
+
+        <!-- Buttons -->
+
+        <div class="button-section">
+
+
+            <button onclick="updateProfile()"
+                    class="save-btn">
+
+                Update Profile
+
+            </button>
+
+
+
+            <button onclick="window.location.href='profile.html'"
+                    class="cancel-btn">
+
+                Cancel
+
+            </button>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<script src="/js/auth.js"></script>
+
+<script src="js/edit-profile.js"></script>
+
+<script src="../js/usernavbar.js"></script>
+</body>
+
+</html>
