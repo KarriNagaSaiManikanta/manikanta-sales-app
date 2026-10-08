@@ -1,136 +1,123 @@
 package com.example.manikantasales.serviceimpl;
 
-
 import com.example.manikantasales.entity.User;
+import com.example.manikantasales.repository.AddressRepository;
 import com.example.manikantasales.repository.UserRepository;
 import com.example.manikantasales.service.UserService;
 
-import org.springframework.stereotype.Service;
+import jakarta.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
-
 @Service
-public class UserServiceImpl 
-        implements UserService {
+@Transactional
+public class UserServiceImpl implements UserService {
 
+    private final UserRepository userRepository;
+    private final AddressRepository addressRepository;
 
+    public UserServiceImpl(UserRepository userRepository,
+                           AddressRepository addressRepository) {
 
-private final UserRepository userRepository;
+        this.userRepository = userRepository;
+        this.addressRepository = addressRepository;
+    }
 
+    // =====================================
+    // GET USER BY EMAIL
+    // =====================================
 
+    @Override
+    public User getUserByEmail(String email) {
 
-public UserServiceImpl(
-        UserRepository userRepository
-){
+        return userRepository.findByEmail(email)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
 
-this.userRepository=userRepository;
+    }
 
-}
+    // =====================================
+    // GET ALL USERS
+    // =====================================
 
+    @Override
+    public List<User> getAllUsers() {
 
-@Override
-public User getUserByEmail(String email){
+        return userRepository.findAllByOrderByIdDesc();
 
-    return userRepository.findByEmail(email)
-            .orElseThrow(
-                () -> new RuntimeException("User not found")
-            );
+    }
 
-}
+    // =====================================
+    // GET USER BY ID
+    // =====================================
 
+    @Override
+    public User getUserById(Long id) {
 
-@Override
-public List<User> getAllUsers(){
+        return userRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
 
-return userRepository
-        .findAllByOrderByIdDesc();
+    }
 
-}
+    // =====================================
+    // DELETE USER
+    // =====================================
 
+    @Override
+    public void deleteUser(Long id) {
 
+        User user = getUserById(id);
 
+        // Delete all addresses of this user
+        addressRepository.deleteByUser(user);
 
+        // Delete user
+        userRepository.delete(user);
 
+    }
 
-@Override
-public User getUserById(Long id){
+    // =====================================
+    // BLOCK USER
+    // =====================================
 
+    @Override
+    public void blockUser(Long id) {
 
-return userRepository
-        .findById(id)
-        .orElseThrow(
-        ()->new RuntimeException(
-        "User not found"
-        ));
+        User user = getUserById(id);
 
-}
+        user.setAccountLocked(true);
 
+        userRepository.save(user);
 
+    }
 
+    // =====================================
+    // UNBLOCK USER
+    // =====================================
 
+    @Override
+    public void unblockUser(Long id) {
 
+        User user = getUserById(id);
 
-@Override
-public void deleteUser(Long id){
+        user.setAccountLocked(false);
 
-userRepository.deleteById(id);
+        userRepository.save(user);
 
-}
+    }
 
+    // =====================================
+    // USER COUNT
+    // =====================================
 
+    @Override
+    public Long getUserCount() {
 
+        return userRepository.count();
 
-
-@Override
-public void blockUser(Long id){
-
-
-User user=getUserById(id);
-
-
-user.setAccountLocked(true);
-
-
-userRepository.save(user);
-
-
-}
-
-
-
-
-
-
-
-@Override
-public void unblockUser(Long id){
-
-
-User user=getUserById(id);
-
-
-user.setAccountLocked(false);
-
-
-userRepository.save(user);
-
-
-}
-
-
-
-
-
-@Override
-public Long getUserCount(){
-
-return userRepository.count();
-
-}
-
-
+    }
 
 }
