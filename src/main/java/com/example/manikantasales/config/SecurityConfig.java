@@ -1,18 +1,16 @@
 package com.example.manikantasales.config;
 
-
 import com.example.manikantasales.security.CustomUserDetailsService;
 import com.example.manikantasales.security.JwtAuthenticationFilter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.http.HttpMethod;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,56 +18,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
-
 @Configuration
 public class SecurityConfig {
 
-
     private final CustomUserDetailsService customUserDetailsService;
-
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
-
 
     public SecurityConfig(
             CustomUserDetailsService customUserDetailsService,
             JwtAuthenticationFilter jwtAuthenticationFilter
     ){
-
         this.customUserDetailsService = customUserDetailsService;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-
     }
 
-
-
-
-
-
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http
-    ) throws Exception {
-
-
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-
-        .csrf(csrf -> csrf.disable())
-
-
-
-        .authorizeHttpRequests(auth -> auth
-
-
-
-
-
-                // =============================
-                // STATIC
-                // =============================
-
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                // STATIC FILES
                 .requestMatchers(
                         "/css/**",
                         "/js/**",
@@ -77,18 +46,9 @@ public class SecurityConfig {
                         "/uploads/**",
                         "/assets/**",
                         "/favicon.ico"
-                )
-                .permitAll()
+                ).permitAll()
 
-
-
-
-
-
-                // =============================
                 // HTML PAGES
-                // =============================
-
                 .requestMatchers(
                         "/",
                         "/index.html",
@@ -101,249 +61,42 @@ public class SecurityConfig {
                         "/cart.html",
                         "/checkout.html",
                         "/admin/**"
-                )
-                .permitAll()
-
-
-
-
-
-
-                // =============================
-                // AUTH
-                // =============================
-
-                .requestMatchers(
-                        "/api/auth/**"
-                )
-                .permitAll()
-
-
-
-
-
-
-                // =============================
-                // USER PROFILE
-                // =============================
-
-                .requestMatchers(
-                        "/api/users/profile/**"
-                )
-                .authenticated()
-
-
-
-
-
-
-
-                // =============================
-                // CATEGORY
-                // =============================
-
-                .requestMatchers(
-                        HttpMethod.GET,
-                        "/api/categories/**"
-                )
-                .permitAll()
-
-
-
-                .requestMatchers(
-                        "/api/categories/**"
-                )
-                .hasAuthority("ROLE_ADMIN")
-
-
-
-
-
-
-
-
-
-                // =============================
-                // PRODUCTS
-                // =============================
-
-                .requestMatchers(
-                        HttpMethod.GET,
-                        "/api/products/**"
-                )
-                .permitAll()
-
-
-
-                .requestMatchers(
-                        "/api/products/**"
-                )
-                .hasAuthority("ROLE_ADMIN")
-
-
-
-
-
-
-
-
-
-                // =============================
-                // CART
-                // =============================
-
-                .requestMatchers(
-                        "/api/cart/**"
-                )
-                .authenticated()
-
-
-
-
-
-
-
-                // =============================
-                // WISHLIST
-                // =============================
-
-                .requestMatchers(
-                        "/api/wishlist/**"
-                )
-                .authenticated()
-
-
-
-
-
-
-
-                // =============================
-                // ADDRESS API
-                // =============================
-
-                .requestMatchers(
-                        "/api/address/**"
-                )
-                .authenticated()
-
-
-
-
-
-
-
-                // =============================
-                // USER ORDERS
-                // =============================
-
-                .requestMatchers(
-                        "/api/orders/**"
-                )
-                .authenticated()
-
-
-
-
-
-
-
-                // =============================
-                // ADMIN
-                // =============================
-
-                .requestMatchers(
-                        "/api/admin/**"
-                )
-                .hasAuthority("ROLE_ADMIN")
-
-
-
-
-
-
-
-                // =============================
-                // DEFAULT
-                // =============================
-
-                .anyRequest()
-                .permitAll()
-
-
-
-        )
-
-
-
-
-
-        .userDetailsService(
-                customUserDetailsService
-        )
-
-
-
-
-
-        .addFilterBefore(
-                jwtAuthenticationFilter,
-                UsernamePasswordAuthenticationFilter.class
-        )
-
-
-
-
-
-        .formLogin(
-                login -> login.disable()
-        )
-
-
-
-
-
-        .httpBasic(
-                basic -> basic.disable()
-        );
-
-
+                ).permitAll()
+
+                // AUTH APIs
+                .requestMatchers("/api/auth/**").permitAll()
+
+                // CATEGORY APIs
+                .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+                .requestMatchers("/api/categories/**").hasAuthority("ROLE_ADMIN")
+
+                // PRODUCT APIs
+                .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+                .requestMatchers("/api/products/**").hasAuthority("ROLE_ADMIN")
+
+                // SECURED APIs
+                .requestMatchers("/api/cart/**", "/api/wishlist/**", "/api/address/**", "/api/orders/**", "/api/users/profile/**").authenticated()
+                .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN")
+
+                .anyRequest().permitAll()
+            )
+            .userDetailsService(customUserDetailsService)
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .formLogin(login -> login.disable())
+            .httpBasic(basic -> basic.disable());
 
         return http.build();
-
     }
-
-
-
-
-
-
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-
         return new BCryptPasswordEncoder();
-
     }
-
-
-
-
-
-
-
 
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration
-    )
-    throws Exception {
-
-
+    ) throws Exception {
         return configuration.getAuthenticationManager();
-
     }
-
-
-
 }
