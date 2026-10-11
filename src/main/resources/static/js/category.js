@@ -258,35 +258,15 @@ function renderTable(categories){
     categories.forEach(category=>{
 
 
-        const image =
-
-        category.image
-
-        ?
-
-        `
-
-        <img
-
-        class="category-img"
-
-        src="http://localhost:8080${category.image}"
-
-        onerror="this.src='../images/no-image.png'"
-
-        >
-
-        `
-
-        :
-
-        "No Image";
-
-
-
-
-
-
+		const image = category.image
+		? `
+		<img
+		class="category-img"
+		src="${category.image}"
+		onerror="this.src='../images/no-image.png'"
+		>
+		`
+		: "No Image";
 
         tableBody.innerHTML += `
 
