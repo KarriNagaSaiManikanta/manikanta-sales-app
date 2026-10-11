@@ -1,5 +1,10 @@
+// =======================================
+// EDIT PROFILE JS
+// Manikanta Sales Admin
+// =======================================
+
 const PROFILE_API = "/api/users/profile";
-const IMAGE_API = "http://localhost:8080/api/users/profile/image";
+const IMAGE_API = "/api/users/profile/image"; // Fixed: Removed localhost reference
 
 const token = localStorage.getItem("token");
 let selectedImage = null;
@@ -31,8 +36,7 @@ async function loadEditProfile() {
         document.getElementById("role").value = user.role;
 
         if (user.profileImage) {
-            document.getElementById("profilePreview").src =
-                "http://localhost:8080" + user.profileImage;
+            document.getElementById("profilePreview").src = user.profileImage; // Fixed: Removed localhost reference
         }
 
     } catch (error) {
