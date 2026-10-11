@@ -1,4 +1,9 @@
-const API = "http://localhost:8080/api/users/profile";
+// =======================================
+// ADMIN PROFILE JS
+// Manikanta Sales Admin
+// =======================================
+
+const API = "/api/users/profile";
 const token = localStorage.getItem("token");
 
 document.addEventListener("DOMContentLoaded", loadProfile);
@@ -30,7 +35,7 @@ async function loadProfile() {
         const image = document.getElementById("profileImage");
 
         if (user.profileImage) {
-            image.src = "http://localhost:8080" + user.profileImage;
+            image.src = user.profileImage; // Fixed: Removed localhost reference
         } else {
             image.src = "/images/admin.png";
         }
