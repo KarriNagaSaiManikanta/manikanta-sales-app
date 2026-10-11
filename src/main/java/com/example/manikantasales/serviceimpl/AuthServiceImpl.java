@@ -391,47 +391,53 @@ public class AuthServiceImpl implements AuthService {
     // ===========================
     // LOGIN
     // ===========================
+
     @Override
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponse login(LoginRequest request){
 
-        try {
 
-            System.out.println("========== LOGIN START ==========");
 
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
 
-            System.out.println("Authentication SUCCESS");
 
-            User user = userRepository.findByEmail(request.getEmail())
-                    .orElseThrow(() -> new RuntimeException("User Not Found"));
 
-            String token = jwtService.generateToken(
-                    user.getEmail(),
-                    user.getRole().name()
-            );
+        User user =
+                userRepository.findByEmail(
+                        request.getEmail()
+                )
+                .orElseThrow(
+                        ()->new RuntimeException(
+                                "User Not Found"
+                        )
+                );
 
-            return new LoginResponse(
-                    token,
-                    "Login Successful",
-                    user.getRole().name()
-            );
 
-        } catch (Exception e) {
 
-            System.out.println("========== LOGIN FAILED ==========");
-            System.out.println("Exception = " + e.getClass().getName());
-            System.out.println("Message = " + e.getMessage());
+        String token =
+                jwtService.generateToken(
+                        user.getEmail(),
+                        user.getRole().name()
+                );
 
-            e.printStackTrace();   // <-- IMPORTANT
 
-            throw e;
-        }
+
+        return new LoginResponse(
+                token,
+                "Login Successful",
+                user.getRole().name()
+        );
+
     }
+
+
+
+
+
     // ===========================
     // FORGOT PASSWORD
     // ===========================
