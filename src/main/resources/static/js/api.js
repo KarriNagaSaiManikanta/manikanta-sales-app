@@ -3,7 +3,9 @@
 // API CONFIG=========
 
 // Base URL
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:8080/api'
+    : 'https://manikanta-sales-app.onrender.com/api';
 
 // ==========================================
 // AUTH APIs
