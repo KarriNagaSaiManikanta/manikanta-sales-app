@@ -36,8 +36,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
+            .cors(cors -> {}) // Enable CORS configuration
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
+                // ALLOW ALL OPTIONS REQUESTS (CORS Preflight Check)
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                 // STATIC FILES
                 .requestMatchers(
                         "/css/**",
@@ -63,7 +67,7 @@ public class SecurityConfig {
                         "/admin/**"
                 ).permitAll()
 
-                // AUTH APIs
+                // AUTH APIs (Login, Register, etc.)
                 .requestMatchers("/api/auth/**").permitAll()
 
                 // CATEGORY APIs
@@ -75,9 +79,18 @@ public class SecurityConfig {
                 .requestMatchers("/api/products/**").hasAuthority("ROLE_ADMIN")
 
                 // SECURED APIs
-                .requestMatchers("/api/cart/**", "/api/wishlist/**", "/api/address/**", "/api/orders/**", "/api/users/profile/**").authenticated()
+                .requestMatchers(
+                        "/api/cart/**",
+                        "/api/wishlist/**",
+                        "/api/address/**",
+                        "/api/orders/**",
+                        "/api/users/profile/**"
+                ).authenticated()
+
+                // ADMIN APIs
                 .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN")
 
+                // DEFAULT
                 .anyRequest().permitAll()
             )
             .userDetailsService(customUserDetailsService)
