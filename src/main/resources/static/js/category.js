@@ -268,6 +268,9 @@ function renderTable(categories){
 		`
 		: "No Image";
 
+
+
+
         tableBody.innerHTML += `
 
 
