@@ -391,14 +391,12 @@ public class AuthServiceImpl implements AuthService {
     // ===========================
     // LOGIN
     // ===========================
-
     @Override
     public LoginResponse login(LoginRequest request) {
 
         try {
 
             System.out.println("========== LOGIN START ==========");
-            System.out.println("Email : " + request.getEmail());
 
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -407,7 +405,7 @@ public class AuthServiceImpl implements AuthService {
                     )
             );
 
-            System.out.println("Authentication Successful");
+            System.out.println("Authentication SUCCESS");
 
             User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> new RuntimeException("User Not Found"));
@@ -416,8 +414,6 @@ public class AuthServiceImpl implements AuthService {
                     user.getEmail(),
                     user.getRole().name()
             );
-
-            System.out.println("JWT Generated Successfully");
 
             return new LoginResponse(
                     token,
@@ -428,9 +424,10 @@ public class AuthServiceImpl implements AuthService {
         } catch (Exception e) {
 
             System.out.println("========== LOGIN FAILED ==========");
-            System.out.println("Exception : " + e.getClass().getName());
-            System.out.println("Message   : " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("Exception = " + e.getClass().getName());
+            System.out.println("Message = " + e.getMessage());
+
+            e.printStackTrace();   // <-- IMPORTANT
 
             throw e;
         }
