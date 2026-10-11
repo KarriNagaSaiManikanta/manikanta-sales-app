@@ -1,4 +1,4 @@
-const PROFILE_API = "http://localhost:8080/api/users/profile";
+const PROFILE_API = "/api/users/profile";
 const IMAGE_API = "http://localhost:8080/api/users/profile/image";
 
 const token = localStorage.getItem("token");
