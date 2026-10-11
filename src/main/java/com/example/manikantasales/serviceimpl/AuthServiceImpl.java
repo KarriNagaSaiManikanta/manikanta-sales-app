@@ -393,51 +393,48 @@ public class AuthServiceImpl implements AuthService {
     // ===========================
 
     @Override
-    public LoginResponse login(LoginRequest request){
+    public LoginResponse login(LoginRequest request) {
 
+        try {
 
+            System.out.println("========== LOGIN START ==========");
+            System.out.println("Email : " + request.getEmail());
 
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(),
+                            request.getPassword()
+                    )
+            );
 
+            System.out.println("Authentication Successful");
 
+            User user = userRepository.findByEmail(request.getEmail())
+                    .orElseThrow(() -> new RuntimeException("User Not Found"));
 
-        User user =
-                userRepository.findByEmail(
-                        request.getEmail()
-                )
-                .orElseThrow(
-                        ()->new RuntimeException(
-                                "User Not Found"
-                        )
-                );
+            String token = jwtService.generateToken(
+                    user.getEmail(),
+                    user.getRole().name()
+            );
 
+            System.out.println("JWT Generated Successfully");
 
+            return new LoginResponse(
+                    token,
+                    "Login Successful",
+                    user.getRole().name()
+            );
 
-        String token =
-                jwtService.generateToken(
-                        user.getEmail(),
-                        user.getRole().name()
-                );
+        } catch (Exception e) {
 
+            System.out.println("========== LOGIN FAILED ==========");
+            System.out.println("Exception : " + e.getClass().getName());
+            System.out.println("Message   : " + e.getMessage());
+            e.printStackTrace();
 
-
-        return new LoginResponse(
-                token,
-                "Login Successful",
-                user.getRole().name()
-        );
-
+            throw e;
+        }
     }
-
-
-
-
-
     // ===========================
     // FORGOT PASSWORD
     // ===========================
