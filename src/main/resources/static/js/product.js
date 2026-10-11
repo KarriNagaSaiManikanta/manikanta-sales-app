@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/products";
+const API_URL = "/api/products";
 
 let currentPage = 0;
 let pageSize = 10;
@@ -80,7 +80,7 @@ function displayProducts(products) {
         let image = "../images/no-image.png";
 
         if (product.image && product.image.trim() !== "") {
-            image = "http://localhost:8080" + product.image;
+            image = product.image; // Fixed: Removed localhost reference
         }
 
         html += `
@@ -247,4 +247,3 @@ async function deleteProduct(id) {
     }
 
 }
-
