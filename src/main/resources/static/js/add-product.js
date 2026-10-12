@@ -1,9 +1,5 @@
-const PRODUCT_API =
-"http://localhost:8080/api/products";
-
-
-const CATEGORY_API =
-"http://localhost:8080/api/categories";
+const PRODUCT_API = "/api/products";
+const CATEGORY_API = "/api/categories";
 
 
 const token =
