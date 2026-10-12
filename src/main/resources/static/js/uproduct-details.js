@@ -1,10 +1,10 @@
 // =====================================
-// API
+// API URLS
 // =====================================
 
 const API = "/api/products";
 
-const SERVER_URL = "http://localhost:8080";
+const SERVER_URL = "";
 
 
 // =====================================
@@ -57,75 +57,50 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 function loadProduct(){
 
-
 const token = localStorage.getItem("token");
-
 
 fetch(`${API}/${productId}`,{
 
-
     headers:{
-
-
-        "Authorization":
-        "Bearer "+token
-
-
+        "Authorization": "Bearer "+token
     }
 
-
 })
-
 
 .then(response=>{
 
-
     console.log("Product Status :",response.status);
 
-
     if(!response.ok){
-
         throw new Error(
             "Product not found"
         );
-
     }
-
 
     return response.json();
 
-
 })
-
 
 .then(product=>{
 
-
     console.log("Product Data :",product);
-
 
     showProduct(product);
 
-
 })
 
-
 .catch(error=>{
-
 
     console.error(
         "Load Product Error:",
         error
     );
 
-
     alert(
         "Unable to load product."
     );
 
-
 });
-
 
 }
 
@@ -140,22 +115,21 @@ fetch(`${API}/${productId}`,{
 
 function showProduct(product){
 
-
-
 let image = product.image;
 
-
-/*
- image database:
- /uploads/products/file.jpg
-*/
+// Clean up old localhost reference from database records
+if(image && image.includes("localhost:8080")){
+    image = image.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+}
 
 if(image){
 
-    if(!image.startsWith("http")){
+    if(!image.startsWith("http") && !image.startsWith("/")){
 
+        image = SERVER_URL + "/" + image;
+
+    } else {
         image = SERVER_URL + image;
-
     }
 
 }
@@ -172,15 +146,22 @@ else{
 
 // IMAGE
 
-document.getElementById("productImage").src=image;
+const mainImg = document.getElementById("productImage");
+if(mainImg){
+    mainImg.src = image;
+    mainImg.onerror = function() {
+        this.onerror = null;
+        this.src = "/images/no-image.png";
+    };
+}
 
+const thumb1 = document.getElementById("thumb1");
+const thumb2 = document.getElementById("thumb2");
+const thumb3 = document.getElementById("thumb3");
 
-document.getElementById("thumb1").src=image;
-
-document.getElementById("thumb2").src=image;
-
-document.getElementById("thumb3").src=image;
-
+if(thumb1) thumb1.src = image;
+if(thumb2) thumb2.src = image;
+if(thumb3) thumb3.src = image;
 
 
 
@@ -472,10 +453,6 @@ quantity;
 // ADD CART
 // =====================================
 
-// =====================================
-// ADD CART
-// =====================================
-
 function addToCart(){
 
 
@@ -610,10 +587,6 @@ alert(
 
 
 // =====================================
-// WISHLIST
-// =====================================
-
-// =====================================
 // ADD WISHLIST
 // =====================================
 
@@ -725,46 +698,45 @@ alert(
 
 function loadRelatedProducts(){
 
+const token = localStorage.getItem("token");
 
 fetch(
-`${API}/${productId}`
+`${API}/${productId}`,
+{
+    headers: {
+        "Authorization": "Bearer "+token
+    }
+}
 )
-
 
 .then(response=>response.json())
 
-
 .then(currentProduct=>{
-
 
 const categoryId =
 
 currentProduct.category.id;
 
-
-
 return fetch(
 
-`${API}/category/${categoryId}?page=0&size=5`
+`${API}/category/${categoryId}?page=0&size=5`,
+{
+    headers: {
+        "Authorization": "Bearer "+token
+    }
+}
 
 );
 
-
-
 })
-
 
 .then(response=>response.json())
 
-
 .then(data=>{
-
 
 let html="";
 
-
 data.content.forEach(product=>{
-
 
 // current product skip
 
@@ -772,42 +744,36 @@ if(product.id == productId)
 
 return;
 
-
-
 let image = product.image;
 
+// Clean up old localhost reference for related products
+if(image && image.includes("localhost:8080")){
+    image = image.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+}
 
+if(image){
 
-if(image && !image.startsWith("http")){
+    if(!image.startsWith("http") && !image.startsWith("/")){
 
+        image = "/" + image;
 
-image =
-"http://localhost:8080"+image;
-
+    }
 
 }
 
-else if(!image){
+else{
 
-
-image="/images/no-image.png";
-
+    image="/images/no-image.png";
 
 }
-
-
 
 html += `
 
-
 <div class="related-card">
-
 
 <img src="${image}"
 
 onerror="this.src='/images/no-image.png'">
-
-
 
 <h4>
 
@@ -815,58 +781,39 @@ ${product.name}
 
 </h4>
 
-
-
 <p>
 
 ₹ ${product.price}
 
 </p>
 
-
-
 <button
 
 onclick="window.location.href='/uproduct-details.html?id=${product.id}'">
 
-
 View Details
-
 
 </button>
 
-
-
 </div>
-
 
 `;
 
-
-
 });
-
-
-
 
 document.getElementById(
 "relatedProducts"
 ).innerHTML = html;
 
-
-
 })
 
 .catch(error=>{
-
 
 console.log(
 "Related Category Error:",
 error
 );
 
-
 });
-
 
 }
