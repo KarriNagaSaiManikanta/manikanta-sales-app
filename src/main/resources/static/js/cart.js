@@ -101,6 +101,10 @@ function displayCart(cart) {
                 ? imgUrl
                 : "/images/no-image.png";
 
+        // స్టాక్ లేదా డిఫాల్ట్ వాల్యూస్ సురక్షితంగా పాస్ చేయడానికి
+        const currentQty = item.quantity || 1;
+        const maxStock = item.stock || 100;
+
         container.innerHTML += `
 
         <div class="cart-card">
@@ -150,11 +154,11 @@ function displayCart(cart) {
                 </button>
 
                 <span class="qty">
-                    ${item.quantity}
+                    ${currentQty}
                 </span>
 
                 <button
-                    onclick="increase(${item.cartId})">
+                    onclick="increase(${item.cartId}, ${currentQty}, ${maxStock})">
                     +
                 </button>
 
@@ -196,6 +200,7 @@ function displayCart(cart) {
     calculateSelectedTotal();
 
 }
+
 // =================================
 // UPDATE TOTALS
 // =================================
@@ -212,28 +217,18 @@ function updateTotals(items, price) {
         document.getElementById("grandTotal");
 
     if (totalItems) {
-
         totalItems.innerText = items;
-
     }
 
     if (totalPrice) {
-
-        totalPrice.innerText =
-            "₹" + price.toFixed(2);
-
+        totalPrice.innerText = "₹" + price.toFixed(2);
     }
 
     if (grandTotal) {
-
-        grandTotal.innerText =
-            "₹" + price.toFixed(2);
-
+        grandTotal.innerText = "₹" + price.toFixed(2);
     }
 
 }
-
-
 
 // =================================
 // CALCULATE SELECTED TOTAL
@@ -282,8 +277,6 @@ function calculateSelectedTotal() {
 
 }
 
-
-
 // =================================
 // SELECT ALL
 // =================================
@@ -301,8 +294,6 @@ function selectAllProducts(source) {
     calculateSelectedTotal();
 
 }
-
-
 
 // =================================
 // GET SELECTED CART IDS
@@ -331,6 +322,7 @@ function getSelectedCartIds() {
     return ids;
 
 }
+
 // =================================
 // INCREASE QUANTITY
 // =================================
@@ -349,15 +341,20 @@ function increase(cartId, qty, stock){
             "Authorization":"Bearer " + token
         }
     })
-    .then(response=>{
-        if(!response.ok){
-            throw new Error();
-        }
-
+    .then(response => {
+        return response.text().then(text => {
+            if(!response.ok){
+                throw new Error(text || "Unable to increase quantity");
+            }
+            return text;
+        });
+    })
+    .then(()=>{
         loadCart();
     })
-    .catch(()=>{
-        alert("Only limited stock is available");
+    .catch(error=>{
+        console.error("Increase Error:", error);
+        alert("Unable to increase quantity: " + error.message);
     });
 
 }
@@ -380,14 +377,13 @@ function decrease(cartId){
 
     })
 
-    .then(response=>{
-
-        if(!response.ok){
-            throw new Error("Unable to decrease quantity");
-        }
-
-        return response.text();
-
+    .then(response => {
+        return response.text().then(text => {
+            if(!response.ok){
+                throw new Error(text || "Unable to decrease quantity");
+            }
+            return text;
+        });
     })
 
     .then(()=>{
@@ -398,15 +394,13 @@ function decrease(cartId){
 
     .catch(error=>{
 
-        console.error(error);
+        console.error("Decrease Error:", error);
 
-        alert("Unable to decrease quantity");
+        alert("Unable to decrease quantity: " + error.message);
 
     });
 
 }
-
-
 
 // =====================================
 // REMOVE CART ITEM
@@ -431,7 +425,6 @@ function removeItem(cartId){
     })
 
     .then(response => {
-        // సర్వర్ నుండి వచ్చే టెక్స్ట్ రెస్పాన్స్ ని రీడ్ చేసి ఎర్రర్ లాగ్ చేస్తుంది
         return response.text().then(text => {
             if(!response.ok){
                 throw new Error(text || "Unable to remove product");
@@ -455,6 +448,7 @@ function removeItem(cartId){
     });
 
 }
+
 // =================================
 // CLEAR CART
 // =================================
@@ -501,6 +495,7 @@ function clearCart(){
     });
 
 }
+
 // =================================
 // CHECKOUT
 // =================================
