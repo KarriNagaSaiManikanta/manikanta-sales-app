@@ -1,4 +1,4 @@
-const USER_API = "http://localhost:8080/api/users";
+const USER_API = "/api/users";
 
 const token = localStorage.getItem("token");
 
@@ -60,12 +60,19 @@ function loadUser() {
         // ==========================
         const img = document.getElementById("profileImage");
 
-        img.src = user.profileImage && user.profileImage.trim() !== ""
-            ? "http://localhost:8080" + user.profileImage
-            : "../images/user.png";
+        let profileImg = user.profileImage;
+
+        // Clean up old localhost reference from database records
+        if (profileImg && profileImg.includes("localhost:8080")) {
+            profileImg = profileImg.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+        }
+
+        img.src = profileImg && profileImg.trim() !== ""
+            ? profileImg
+            : "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 24 24\' fill=\'%23ccc\'><path d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/></svg>";
 
         img.onerror = function () {
-            this.src = "../images/user.png";
+            this.src = "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 24 24\' fill=\'%23ccc\'><path d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/></svg>";
         };
 
         // ==========================
@@ -78,19 +85,23 @@ function loadUser() {
 
         if (user.accountLocked) {
 
-            status.innerText = "Blocked";
-            status.style.background = "#f44336";
+            if (status) {
+                status.innerText = "Blocked";
+                status.style.background = "#f44336";
+            }
 
-            blockBtn.style.display = "none";
-            unblockBtn.style.display = "inline-block";
+            if (blockBtn) blockBtn.style.display = "none";
+            if (unblockBtn) unblockBtn.style.display = "inline-block";
 
         } else {
 
-            status.innerText = "Active";
-            status.style.background = "#4CAF50";
+            if (status) {
+                status.innerText = "Active";
+                status.style.background = "#4CAF50";
+            }
 
-            blockBtn.style.display = "inline-block";
-            unblockBtn.style.display = "none";
+            if (blockBtn) blockBtn.style.display = "inline-block";
+            if (unblockBtn) unblockBtn.style.display = "none";
         }
 
     })
@@ -105,106 +116,115 @@ function loadUser() {
 // =====================================
 // BLOCK USER
 // =====================================
-document.getElementById("blockBtn").onclick = function () {
+const blockBtnElement = document.getElementById("blockBtn");
+if (blockBtnElement) {
+    blockBtnElement.onclick = function () {
 
-    if (!confirm("Block this user?")) {
-        return;
-    }
-
-    fetch(USER_API + "/block/" + id, {
-
-        method: "PUT",
-
-        headers: {
-            "Authorization": "Bearer " + token
+        if (!confirm("Block this user?")) {
+            return;
         }
 
-    })
-    .then(response => {
+        fetch(USER_API + "/block/" + id, {
 
-        if (!response.ok) {
-            throw new Error("Block failed");
-        }
+            method: "PUT",
 
-        loadUser();
+            headers: {
+                "Authorization": "Bearer " + token
+            }
 
-    })
-    .catch(error => {
+        })
+        .then(response => {
 
-        console.log("Block Error :", error);
+            if (!response.ok) {
+                throw new Error("Block failed");
+            }
 
-    });
+            loadUser();
 
-};
+        })
+        .catch(error => {
+
+            console.log("Block Error :", error);
+
+        });
+
+    };
+}
 
 // =====================================
 // UNBLOCK USER
 // =====================================
-document.getElementById("unblockBtn").onclick = function () {
+const unblockBtnElement = document.getElementById("unblockBtn");
+if (unblockBtnElement) {
+    unblockBtnElement.onclick = function () {
 
-    if (!confirm("Unblock this user?")) {
-        return;
-    }
-
-    fetch(USER_API + "/unblock/" + id, {
-
-        method: "PUT",
-
-        headers: {
-            "Authorization": "Bearer " + token
+        if (!confirm("Unblock this user?")) {
+            return;
         }
 
-    })
-    .then(response => {
+        fetch(USER_API + "/unblock/" + id, {
 
-        if (!response.ok) {
-            throw new Error("Unblock failed");
-        }
+            method: "PUT",
 
-        loadUser();
+            headers: {
+                "Authorization": "Bearer " + token
+            }
 
-    })
-    .catch(error => {
+        })
+        .then(response => {
 
-        console.log("Unblock Error :", error);
+            if (!response.ok) {
+                throw new Error("Unblock failed");
+            }
 
-    });
+            loadUser();
 
-};
+        })
+        .catch(error => {
+
+            console.log("Unblock Error :", error);
+
+        });
+
+    };
+}
 
 // =====================================
 // DELETE USER
 // =====================================
-document.getElementById("deleteBtn").onclick = function () {
+const deleteBtnElement = document.getElementById("deleteBtn");
+if (deleteBtnElement) {
+    deleteBtnElement.onclick = function () {
 
-    if (!confirm("Delete this user permanently?")) {
-        return;
-    }
-
-    fetch(USER_API + "/" + id, {
-
-        method: "DELETE",
-
-        headers: {
-            "Authorization": "Bearer " + token
+        if (!confirm("Delete this user permanently?")) {
+            return;
         }
 
-    })
-    .then(response => {
+        fetch(USER_API + "/" + id, {
 
-        if (!response.ok) {
-            throw new Error("Delete failed");
-        }
+            method: "DELETE",
 
-        alert("User deleted successfully.");
+            headers: {
+                "Authorization": "Bearer " + token
+            }
 
-        window.location.href = "users.html";
+        })
+        .then(response => {
 
-    })
-    .catch(error => {
+            if (!response.ok) {
+                throw new Error("Delete failed");
+            }
 
-        console.log("Delete Error :", error);
+            alert("User deleted successfully.");
 
-    });
+            window.location.href = "users.html";
 
-};
+        })
+        .catch(error => {
+
+            console.log("Delete Error :", error);
+
+        });
+
+    };
+}
