@@ -89,9 +89,17 @@ function displayCart(cart) {
 
     cart.forEach(item => {
 
-        let image =
-            item.productImage ||
-            "/images/no-image.png";
+        let imgUrl = item.productImage;
+
+        // Clean up old localhost reference from database records
+        if (imgUrl && imgUrl.includes("localhost:8080")) {
+            imgUrl = imgUrl.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+        }
+
+        const image =
+            imgUrl && imgUrl.trim() !== ""
+                ? imgUrl
+                : "/images/no-image.png";
 
         container.innerHTML += `
 
@@ -111,7 +119,7 @@ function displayCart(cart) {
             <img
                 class="cart-image"
                 src="${image}"
-                onerror="this.src='/images/no-image.png'">
+                onerror="this.onerror=null; this.src='/images/no-image.png'">
 
             <div class="cart-info">
 
@@ -400,9 +408,9 @@ function decrease(cartId){
 
 
 
-// =================================
+// =====================================
 // REMOVE CART ITEM
-// =================================
+// =====================================
 
 function removeItem(cartId){
 
@@ -422,14 +430,14 @@ function removeItem(cartId){
 
     })
 
-    .then(response=>{
-
-        if(!response.ok){
-            throw new Error("Unable to remove product");
-        }
-
-        return response.text();
-
+    .then(response => {
+        // సర్వర్ నుండి వచ్చే టెక్స్ట్ రెస్పాన్స్ ని రీడ్ చేసి ఎర్రర్ లాగ్ చేస్తుంది
+        return response.text().then(text => {
+            if(!response.ok){
+                throw new Error(text || "Unable to remove product");
+            }
+            return text;
+        });
     })
 
     .then(()=>{
@@ -440,15 +448,13 @@ function removeItem(cartId){
 
     .catch(error=>{
 
-        console.error(error);
+        console.error("Remove Error:", error);
 
-        alert("Unable to remove product");
+        alert("Server Error: " + error.message);
 
     });
 
 }
-
-
 
 // =================================
 // CLEAR CART
