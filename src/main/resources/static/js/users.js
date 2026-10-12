@@ -21,7 +21,8 @@ function getToken() {
 // =====================================
 function loadUsers() {
 
-    fetch(USER_API + "/all", {
+    // Fixed: Changed USER_API to USERS_API to match the declaration above
+    fetch(USERS_API + "/all", {
         headers: {
             "Authorization": "Bearer " + getToken()
         }
@@ -60,9 +61,16 @@ function displayUsers(users) {
 
     users.forEach(user => {
 
+        let profileImg = user.profileImage;
+
+        // Fixed: Clean up old localhost reference from database records for user profile images
+        if (profileImg && profileImg.includes("localhost:8080")) {
+            profileImg = profileImg.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+        }
+
         const image =
-            user.profileImage && user.profileImage.trim() !== ""
-                ? "http://localhost:8080" + user.profileImage
+            profileImg && profileImg.trim() !== ""
+                ? profileImg
                 : "../images/user.png";
 
         const status = user.accountLocked
@@ -149,6 +157,3 @@ function viewUser(id) {
         "user-details.html?id=" + id;
 
 }
-// =====================================
-// ADD USER
-// =====================================
