@@ -106,20 +106,38 @@ Unable to load wishlist
 
 
 }
+
 function displayWishlist(data){
 
 
 const container =
 document.getElementById("wishlistContainer");
 
+if (!container) return;
 
 let html="";
 
+if (!data || data.length === 0) {
+    container.innerHTML = `<h2>Your Wishlist is Empty ❤️</h2>`;
+    return;
+}
 
 data.forEach(item=>{
 
 
 const product=item.product;
+
+let imgUrl = product.image;
+
+// Clean up old localhost reference from database records
+if (imgUrl && imgUrl.includes("localhost:8080")) {
+    imgUrl = imgUrl.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+}
+
+const image =
+    imgUrl && imgUrl.trim() !== ""
+        ? imgUrl
+        : "/images/no-image.png";
 
 
 html += `
@@ -127,8 +145,8 @@ html += `
 <div class="wishlist-card">
 
 
-<img src="${product.image || '/images/no-image.png'}"
-onerror="this.src='/images/no-image.png'">
+<img src="${image}"
+onerror="this.onerror=null; this.src='/images/no-image.png'">
 
 
 <h3>
@@ -173,6 +191,7 @@ container.innerHTML=html;
 
 
 }
+
 function removeWishlist(productId){
 
 
@@ -209,6 +228,7 @@ loadWishlist();
 
 
 }
+
 // =====================================
 // ADD TO CART FROM WISHLIST
 // =====================================
