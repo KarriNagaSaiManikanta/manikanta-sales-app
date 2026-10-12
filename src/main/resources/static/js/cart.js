@@ -455,7 +455,6 @@ function removeItem(cartId){
     });
 
 }
-
 // =================================
 // CLEAR CART
 // =================================
@@ -478,14 +477,13 @@ function clearCart(){
 
     })
 
-    .then(response=>{
-
-        if(!response.ok){
-            throw new Error("Unable to clear cart");
-        }
-
-        return response.text();
-
+    .then(response => {
+        return response.text().then(text => {
+            if(!response.ok){
+                throw new Error(text || "Unable to clear cart");
+            }
+            return text;
+        });
     })
 
     .then(()=>{
@@ -496,9 +494,9 @@ function clearCart(){
 
     .catch(error=>{
 
-        console.error(error);
+        console.error("Clear Cart Error:", error);
 
-        alert("Unable to clear cart");
+        alert("Server Error: " + error.message);
 
     });
 
