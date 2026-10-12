@@ -63,15 +63,18 @@ function displayUsers(users) {
 
         let profileImg = user.profileImage;
 
-        // Fixed: Clean up old localhost reference from database records for user profile images
+        // Clean up old localhost reference from database records
         if (profileImg && profileImg.includes("localhost:8080")) {
             profileImg = profileImg.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
         }
 
-        const image =
-            profileImg && profileImg.trim() !== ""
-                ? profileImg
-                : "../images/user.png";
+        const fallbackImg = "../images/user.png";
+
+        // Proactively check if profileImg is empty or points to an ephemeral /uploads/ path on Render
+        let image = fallbackImg;
+        if (profileImg && profileImg.trim() !== "" && !profileImg.includes("/uploads/")) {
+            image = profileImg;
+        }
 
         const status = user.accountLocked
             ? '<span class="blocked">Blocked</span>'
@@ -87,7 +90,7 @@ function displayUsers(users) {
 
                     <img class="user-img"
                          src="${image}"
-                         onerror="this.src='../images/user.png'">
+                         onerror="this.onerror=null; this.src='${fallbackImg}';">
 
                     <div>
                         <b>${user.firstName} ${user.lastName}</b>
@@ -123,7 +126,6 @@ function displayUsers(users) {
     });
 
 }
-
 // =====================================
 // SEARCH USERS
 // =====================================
