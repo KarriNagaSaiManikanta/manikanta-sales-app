@@ -87,6 +87,11 @@ try{
 
 
 
+    // Optional: Reset options to avoid duplication
+    select.innerHTML = '<option value="">Select Category</option>';
+
+
+
     categories.forEach(cat=>{
 
 
@@ -293,12 +298,14 @@ document.getElementById(
 );
 
 
-img.src =
-product.image.startsWith("http")
-?
-product.image
-:
-"http://localhost:8080"+product.image;
+let imgPath = product.image;
+
+// Fixed: Clean up old localhost reference from database records
+if(imgPath.includes("localhost:8080")){
+    imgPath = imgPath.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+}
+
+img.src = imgPath;
 
 
 
