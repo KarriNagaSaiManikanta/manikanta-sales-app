@@ -1,5 +1,4 @@
-const API = "http://localhost:8080/api/users/profile";
-
+const API = "/api/users/profile";
 const token = localStorage.getItem("token");
 
 
