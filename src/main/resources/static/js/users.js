@@ -1,4 +1,4 @@
-const USER_API = "http://localhost:8080/api/users";
+const USERS_API = "/api/users";
 
 let allUsers = [];
 
