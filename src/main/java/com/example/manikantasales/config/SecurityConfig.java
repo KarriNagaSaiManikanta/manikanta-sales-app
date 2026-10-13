@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
@@ -18,29 +19,66 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
 
+
     private final CustomUserDetailsService customUserDetailsService;
+
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+
 
     public SecurityConfig(
             CustomUserDetailsService customUserDetailsService,
             JwtAuthenticationFilter jwtAuthenticationFilter
     ){
+
         this.customUserDetailsService = customUserDetailsService;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+
     }
 
+
+
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http
+    ) throws Exception {
+
+
         http
+
+            // Disable CSRF because JWT authentication is stateless
             .csrf(csrf -> csrf.disable())
-            .cors(cors -> {}) // Enable CORS configuration
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+
+            // Enable CORS
+            .cors(cors -> {})
+
+
+            // JWT Stateless Session
+            .sessionManagement(session ->
+                    session.sessionCreationPolicy(
+                            SessionCreationPolicy.STATELESS
+                    )
+            )
+
+
             .authorizeHttpRequests(auth -> auth
-                // ALLOW ALL OPTIONS REQUESTS (CORS Preflight Check)
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+
+
+                // CORS OPTIONS REQUEST
+                .requestMatchers(
+                        HttpMethod.OPTIONS,
+                        "/**"
+                ).permitAll()
+
+
 
                 // STATIC FILES
                 .requestMatchers(
@@ -51,6 +89,8 @@ public class SecurityConfig {
                         "/assets/**",
                         "/favicon.ico"
                 ).permitAll()
+
+
 
                 // HTML PAGES
                 .requestMatchers(
@@ -67,18 +107,55 @@ public class SecurityConfig {
                         "/admin/**"
                 ).permitAll()
 
-                // AUTH APIs (Login, Register, etc.)
-                .requestMatchers("/api/auth/**").permitAll()
+
+
+
+                // AUTH APIs
+                .requestMatchers(
+                        "/api/auth/**"
+                ).permitAll()
+
+
+
 
                 // CATEGORY APIs
-                .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
-                .requestMatchers("/api/categories/**").hasAuthority("ROLE_ADMIN")
+
+                // User can view categories
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/categories/**"
+                ).permitAll()
+
+
+                // Admin category management
+                .requestMatchers(
+                        "/api/categories/**"
+                ).hasAuthority("ROLE_ADMIN")
+
+
+
+
 
                 // PRODUCT APIs
-                .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
-                .requestMatchers("/api/products/**").hasAuthority("ROLE_ADMIN")
 
-                // SECURED APIs
+                // User can view products
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/products/**"
+                ).permitAll()
+
+
+                // Admin product management
+                .requestMatchers(
+                        "/api/products/**"
+                ).hasAuthority("ROLE_ADMIN")
+
+
+
+
+
+                // USER AUTHENTICATED APIs
+
                 .requestMatchers(
                         "/api/cart/**",
                         "/api/wishlist/**",
@@ -87,29 +164,79 @@ public class SecurityConfig {
                         "/api/users/profile/**"
                 ).authenticated()
 
-                // ADMIN APIs
-                .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN")
 
-                // DEFAULT
+
+
+
+                // ADMIN APIs
+
+                .requestMatchers(
+                        "/api/admin/**"
+                ).hasAuthority("ROLE_ADMIN")
+
+
+
+
+
+                // OTHER REQUESTS
+
                 .anyRequest().permitAll()
+
             )
-            .userDetailsService(customUserDetailsService)
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .formLogin(login -> login.disable())
-            .httpBasic(basic -> basic.disable());
+
+
+
+            .userDetailsService(
+                    customUserDetailsService
+            )
+
+
+
+            .addFilterBefore(
+                    jwtAuthenticationFilter,
+                    UsernamePasswordAuthenticationFilter.class
+            )
+
+
+
+            .formLogin(
+                    login -> login.disable()
+            )
+
+
+
+            .httpBasic(
+                    basic -> basic.disable()
+            );
+
 
         return http.build();
+
     }
+
+
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
+
     }
+
+
+
+
 
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration
     ) throws Exception {
+
         return configuration.getAuthenticationManager();
+
     }
+
+
 }

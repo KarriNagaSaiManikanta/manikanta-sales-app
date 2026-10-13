@@ -21,8 +21,11 @@ public class CustomUserDetailsService
     public CustomUserDetailsService(
             UserRepository userRepository
     ){
+
         this.userRepository = userRepository;
+
     }
+
 
 
 
@@ -41,6 +44,13 @@ public class CustomUserDetailsService
                 );
 
 
+
+        String role = user.getRole() != null
+                ? user.getRole().name()
+                : "USER";
+
+
+
         return new org.springframework.security.core.userdetails.User(
 
                 user.getEmail(),
@@ -48,16 +58,23 @@ public class CustomUserDetailsService
                 user.getPassword(),
 
 
-                user.isEnabled(),          // enabled
-                true,                       // account not expired
-                true,                       // credentials not expired
-                !user.isAccountLocked(),    // account not locked
+                user.isEnabled(),
+
+
+                true,
+
+
+                true,
+
+
+                !user.isAccountLocked(),
+
 
 
                 Collections.singleton(
 
                         new SimpleGrantedAuthority(
-                                "ROLE_" + user.getRole().name()
+                                "ROLE_" + role
                         )
 
                 )

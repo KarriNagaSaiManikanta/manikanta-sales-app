@@ -7,6 +7,7 @@ import com.example.manikantasales.enums.PaymentStatus;
 import com.example.manikantasales.service.OrderService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -20,7 +21,9 @@ import java.util.Map;
 @CrossOrigin("*")
 public class OrderController {
 
+
     private final OrderService orderService;
+
 
     public OrderController(OrderService orderService) {
 
@@ -29,15 +32,15 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
-    // PLACE ORDER
-    // =====================================================
+
+    // ==========================
+    // USER PLACE ORDER
+    // ==========================
 
     @PostMapping("/place")
     public ResponseEntity<OrderResponse> placeOrder(
             @RequestBody OrderRequest request
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.placeOrder(request)
@@ -46,13 +49,13 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
-    // MY ORDERS
-    // =====================================================
+
+    // ==========================
+    // USER MY ORDERS
+    // ==========================
 
     @GetMapping("/my")
-    public ResponseEntity<List<OrderResponse>> getMyOrders() {
+    public ResponseEntity<List<OrderResponse>> getMyOrders(){
 
         return ResponseEntity.ok(
                 orderService.getMyOrders()
@@ -61,15 +64,15 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
-    // MY ORDER BY ID
-    // =====================================================
+
+    // ==========================
+    // USER ORDER DETAILS
+    // ==========================
 
     @GetMapping("/my/{id}")
     public ResponseEntity<OrderResponse> getMyOrderById(
             @PathVariable Long id
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.getMyOrderById(id)
@@ -78,16 +81,15 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
+
+    // ==========================
     // ORDER SUCCESS PAGE
-    // GET SINGLE ORDER
-    // =====================================================
+    // ==========================
 
-    @GetMapping("/{id}")
-    public ResponseEntity<OrderResponse> getOrderDetails(
+    @GetMapping("/success/{id}")
+    public ResponseEntity<OrderResponse> getOrderSuccess(
             @PathVariable Long id
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.getMyOrderById(id)
@@ -96,15 +98,15 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
-    // CANCEL ORDER
-    // =====================================================
+
+    // ==========================
+    // USER CANCEL ORDER
+    // ==========================
 
     @PutMapping("/cancel/{id}")
     public ResponseEntity<OrderResponse> cancelOrder(
             @PathVariable Long id
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.cancelOrder(id)
@@ -113,13 +115,16 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // GET ALL ORDERS
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN ALL ORDERS
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
-    public ResponseEntity<List<OrderResponse>> getAllOrders() {
+    public ResponseEntity<List<OrderResponse>> getAllOrders(){
 
         return ResponseEntity.ok(
                 orderService.getAllOrders()
@@ -128,15 +133,17 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // GET ORDER BY ID
-    // =====================================================
 
+
+    // ==========================
+    // ADMIN ORDER DETAILS
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/{id}")
     public ResponseEntity<OrderResponse> getOrderById(
             @PathVariable Long id
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.getOrderById(id)
@@ -145,16 +152,19 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // UPDATE ORDER STATUS
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN UPDATE ORDER STATUS
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin/{id}/status")
     public ResponseEntity<OrderResponse> updateOrderStatus(
             @PathVariable Long id,
             @RequestParam OrderStatus status
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.updateOrderStatus(
@@ -166,16 +176,19 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // UPDATE PAYMENT STATUS
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN PAYMENT STATUS
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin/{id}/payment")
     public ResponseEntity<OrderResponse> updatePaymentStatus(
             @PathVariable Long id,
             @RequestParam PaymentStatus status
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.updatePaymentStatus(
@@ -187,15 +200,18 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // DELETE ORDER
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN DELETE ORDER
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/admin/{id}")
     public ResponseEntity<String> deleteOrder(
             @PathVariable Long id
-    ) {
+    ){
 
         orderService.deleteOrder(id);
 
@@ -206,15 +222,18 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // DASHBOARD
-    // REVENUE CARDS
-    // =====================================================
 
+
+
+    // ==========================
+    // DASHBOARD REVENUE
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/revenue")
-    public ResponseEntity<?> getRevenue() {
+    public ResponseEntity<?> getRevenue(){
 
-        Map<String, Object> response =
+        Map<String,Object> response =
                 new HashMap<>();
 
 
@@ -230,7 +249,7 @@ public class OrderController {
                 BigDecimal.ZERO;
 
 
-        if (totalOrders > 0) {
+        if(totalOrders > 0){
 
             averageOrder =
                     totalRevenue.divide(
@@ -242,29 +261,22 @@ public class OrderController {
         }
 
 
-        response.put(
-                "totalRevenue",
-                totalRevenue
-        );
-
+        response.put("totalRevenue", totalRevenue);
 
         response.put(
                 "todayRevenue",
                 orderService.getTodayRevenue()
         );
 
-
         response.put(
                 "monthRevenue",
                 orderService.getMonthRevenue()
         );
 
-
         response.put(
                 "totalOrders",
                 totalOrders
         );
-
 
         response.put(
                 "averageOrderValue",
@@ -277,13 +289,16 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // DASHBOARD
-    // ORDER COUNT
-    // =====================================================
 
+
+
+    // ==========================
+    // DASHBOARD COUNT
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/count")
-    public ResponseEntity<Long> getOrderCount() {
+    public ResponseEntity<Long> getOrderCount(){
 
         return ResponseEntity.ok(
                 orderService.getOrderCount()
@@ -292,13 +307,16 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // DASHBOARD
-    // RECENT ORDERS
-    // =====================================================
 
+
+
+    // ==========================
+    // RECENT ORDERS
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/recent")
-    public ResponseEntity<List<OrderResponse>> getRecentOrders() {
+    public ResponseEntity<List<OrderResponse>> getRecentOrders(){
 
         return ResponseEntity.ok(
                 orderService.getRecentOrders()
@@ -307,18 +325,19 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // DASHBOARD
-    // REVENUE CHART
-    // =====================================================
 
+
+
+    // ==========================
+    // REVENUE CHART
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/chart")
     public ResponseEntity<?> revenueChart(
-
             @RequestParam(defaultValue = "daily")
             String type
-
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.getRevenueChart(type)
@@ -327,22 +346,30 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // USER
-    // REQUEST RETURN
-    // =====================================================
+
+
+
+    // ==========================
+    // USER RETURN REQUEST
+    // ==========================
 
     @PutMapping("/return/{orderId}")
     public ResponseEntity<OrderResponse> requestReturn(
-
             @PathVariable Long orderId,
-
-            @RequestBody Map<String, String> request
-
-    ) {
+            @RequestBody Map<String,String> request
+    ){
 
         String returnReason =
                 request.get("returnReason");
+
+
+        if(returnReason == null || returnReason.isBlank()){
+
+            throw new RuntimeException(
+                    "Return reason required"
+            );
+
+        }
 
 
         return ResponseEntity.ok(
@@ -355,17 +382,18 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // APPROVE RETURN
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN APPROVE RETURN
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/return/{orderId}/approve")
     public ResponseEntity<OrderResponse> approveReturn(
-
             @PathVariable Long orderId
-
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.approveReturn(orderId)
@@ -374,17 +402,18 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // REJECT RETURN
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN REJECT RETURN
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/return/{orderId}/reject")
     public ResponseEntity<OrderResponse> rejectReturn(
-
             @PathVariable Long orderId
-
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.rejectReturn(orderId)
@@ -393,17 +422,18 @@ public class OrderController {
     }
 
 
-    // =====================================================
-    // ADMIN
-    // COMPLETE RETURN
-    // =====================================================
 
+
+
+    // ==========================
+    // ADMIN COMPLETE RETURN
+    // ==========================
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/return/{orderId}/complete")
     public ResponseEntity<OrderResponse> completeReturn(
-
             @PathVariable Long orderId
-
-    ) {
+    ){
 
         return ResponseEntity.ok(
                 orderService.completeReturn(orderId)
