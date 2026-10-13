@@ -1597,6 +1597,494 @@ public class MailServiceImpl implements EmailService {
 
     }
 
+ // =====================================================
+ // RETURN COMPLETED HTML EMAIL
+ // =====================================================
+
+ @Override
+ public void sendReturnCompletedEmail(Order order) {
 
 
+     String html =
+             """
+             <!DOCTYPE html>
+
+             <html>
+
+             <body style="
+                 margin:0;
+                 padding:0;
+                 background:#f3f4f6;
+                 font-family:Arial,Helvetica,sans-serif;
+             ">
+
+
+             <div style="
+                 max-width:650px;
+                 margin:30px auto;
+                 background:#ffffff;
+                 border-radius:14px;
+                 overflow:hidden;
+             ">
+
+
+             <div style="
+                 background:#172554;
+                 padding:25px;
+                 text-align:center;
+             ">
+
+                 <h1 style="
+                     color:#f59e0b;
+                 ">
+                     Manikanta Sales
+                 </h1>
+
+             </div>
+
+
+
+             <div style="
+                 padding:30px;
+             ">
+
+
+             <div style="
+                 background:#dcfce7;
+                 padding:20px;
+                 border-radius:10px;
+                 text-align:center;
+             ">
+
+                 <h2 style="
+                     color:#166534;
+                 ">
+                     Return Completed Successfully
+                 </h2>
+
+                 <p>
+                     Your product return has been completed.
+                 </p>
+
+             </div>
+
+
+
+             <p>
+                 Hello 
+                 <b>%s</b>,
+             </p>
+
+
+             <p>
+                 Your return process has been completed successfully.
+             </p>
+
+
+
+             <div style="
+                 background:#f8fafc;
+                 padding:20px;
+                 border-radius:10px;
+             ">
+
+
+                 <p>
+                     <b>Order ID:</b> #%s
+                 </p>
+
+
+                 <p>
+                     <b>Amount:</b> ₹%s
+                 </p>
+
+
+                 <p>
+                     <b>Status:</b> %s
+                 </p>
+
+
+             </div>
+
+
+
+             <br>
+
+
+             <p>
+                 Thank you for shopping with
+                 <b>Manikanta Sales</b>.
+             </p>
+
+
+
+             </div>
+
+             </div>
+
+
+             </body>
+
+             </html>
+
+             """.formatted(
+
+                     order.getUser().getFirstName(),
+                     order.getId(),
+                     order.getAmount(),
+                     order.getReturnStatus()
+             );
+
+
+
+     sendHtmlEmail(
+             order.getUser().getEmail(),
+             "Return Completed #" + order.getId(),
+             html
+     );
+
+ }
+//=====================================================
+//ORDER STATUS UPDATE EMAIL
+//=====================================================
+
+@Override
+public void sendOrderStatusEmail(Order order) {
+
+
+  String html =
+          """
+          <!DOCTYPE html>
+
+          <html>
+
+          <body style="
+          font-family:Arial;
+          background:#f3f4f6;
+          padding:20px;
+          ">
+
+
+          <div style="
+          max-width:650px;
+          margin:auto;
+          background:white;
+          padding:30px;
+          border-radius:14px;
+          ">
+
+
+          <h1 style="
+          color:#172554;
+          text-align:center;
+          ">
+          Manikanta Sales
+          </h1>
+
+
+          <h2>
+          Order Status Updated
+          </h2>
+
+
+          <p>
+          Hello <b>%s</b>,
+          </p>
+
+
+          <p>
+          Your order status has been updated.
+          </p>
+
+
+
+          <div style="
+          background:#f8fafc;
+          padding:20px;
+          border-radius:10px;
+          ">
+
+
+          <p>
+          <b>Order ID:</b> #%s
+          </p>
+
+
+          <p>
+          <b>Current Status:</b> %s
+          </p>
+
+
+          <p>
+          <b>Payment:</b> %s
+          </p>
+
+
+          </div>
+
+
+          <br>
+
+
+          <p>
+          Thank you for shopping with
+          <b>Manikanta Sales</b>
+          </p>
+
+
+          </div>
+
+
+          </body>
+
+          </html>
+
+          """.formatted(
+
+                  order.getUser().getFirstName(),
+                  order.getId(),
+                  order.getOrderStatus(),
+                  order.getPaymentStatus()
+
+          );
+
+
+
+  sendHtmlEmail(
+          order.getUser().getEmail(),
+          "Order Status Updated #" + order.getId(),
+          html
+  );
+
+}
+//=====================================================
+//RETURN APPROVED EMAIL
+//=====================================================
+
+@Override
+public void sendReturnApprovedEmail(Order order) {
+
+
+ String html =
+         """
+         <!DOCTYPE html>
+
+         <html>
+
+         <body style="
+         font-family:Arial;
+         background:#f3f4f6;
+         padding:20px;
+         ">
+
+
+         <div style="
+         max-width:650px;
+         margin:auto;
+         background:white;
+         padding:30px;
+         border-radius:14px;
+         ">
+
+
+         <h1 style="
+         color:#172554;
+         text-align:center;
+         ">
+         Manikanta Sales
+         </h1>
+
+
+         <h2 style="
+         color:#166534;
+         ">
+         Return Approved
+         </h2>
+
+
+         <p>
+         Hello <b>%s</b>,
+         </p>
+
+
+         <p>
+         Your return request has been approved.
+         </p>
+
+
+
+         <div style="
+         background:#dcfce7;
+         padding:20px;
+         border-radius:10px;
+         ">
+
+
+         <p>
+         <b>Order ID:</b> #%s
+         </p>
+
+
+         <p>
+         <b>Return Status:</b> APPROVED
+         </p>
+
+
+         <p>
+         <b>Amount:</b> ₹%s
+         </p>
+
+
+         </div>
+
+
+         <br>
+
+
+         Thank you for choosing
+         <b>Manikanta Sales</b>
+
+
+         </div>
+
+
+         </body>
+
+         </html>
+
+         """.formatted(
+
+                 order.getUser().getFirstName(),
+                 order.getId(),
+                 order.getAmount()
+
+         );
+
+
+
+ sendHtmlEmail(
+         order.getUser().getEmail(),
+         "Return Approved #" + order.getId(),
+         html
+ );
+
+
+}
+//=====================================================
+//RETURN REJECTED EMAIL
+//=====================================================
+
+@Override
+public void sendReturnRejectedEmail(Order order) {
+
+
+ String html =
+         """
+         <!DOCTYPE html>
+
+         <html>
+
+         <body style="
+         font-family:Arial;
+         background:#f3f4f6;
+         padding:20px;
+         ">
+
+
+         <div style="
+         max-width:650px;
+         margin:auto;
+         background:white;
+         padding:30px;
+         border-radius:14px;
+         ">
+
+
+         <h1 style="
+         color:#172554;
+         text-align:center;
+         ">
+         Manikanta Sales
+         </h1>
+
+
+
+         <h2 style="
+         color:#b91c1c;
+         ">
+         Return Rejected
+         </h2>
+
+
+
+         <p>
+         Hello <b>%s</b>,
+         </p>
+
+
+
+         <p>
+         Your return request has been rejected.
+         </p>
+
+
+
+         <div style="
+         background:#fee2e2;
+         padding:20px;
+         border-radius:10px;
+         ">
+
+
+         <p>
+         <b>Order ID:</b> #%s
+         </p>
+
+
+         <p>
+         <b>Return Status:</b> REJECTED
+         </p>
+
+
+         <p>
+         <b>Amount:</b> ₹%s
+         </p>
+
+
+         </div>
+
+
+         <br>
+
+
+         Regards,
+
+         <b>Manikanta Sales Team</b>
+
+
+         </div>
+
+
+         </body>
+
+         </html>
+
+         """.formatted(
+
+                 order.getUser().getFirstName(),
+                 order.getId(),
+                 order.getAmount()
+
+         );
+
+
+
+ sendHtmlEmail(
+         order.getUser().getEmail(),
+         "Return Rejected #" + order.getId(),
+         html
+ );
+
+
+}
 }
