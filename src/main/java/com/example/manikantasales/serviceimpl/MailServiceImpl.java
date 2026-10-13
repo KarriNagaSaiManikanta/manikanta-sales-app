@@ -46,8 +46,11 @@ public class MailServiceImpl implements EmailService {
             message.setSubject(subject);
             message.setText(body);
 
+            System.out.println("BEFORE mailSender.send()");
+
             mailSender.send(message);
 
+            System.out.println("AFTER mailSender.send()");
             System.out.println("TEXT EMAIL SENT SUCCESSFULLY");
             System.out.println("=================================");
 
