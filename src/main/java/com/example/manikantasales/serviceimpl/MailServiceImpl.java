@@ -57,10 +57,7 @@ public class MailServiceImpl implements EmailService {
             );
 
 
-            System.out.println(
-                    "MAIL_PASSWORD = "
-                    + System.getenv("MAIL_PASSWORD")
-            );
+            
 
 
 
@@ -113,21 +110,16 @@ public class MailServiceImpl implements EmailService {
         }
         catch(Exception e){
 
-
-            System.out.println(
-                    "TEXT EMAIL FAILED"
-            );
-
+            System.out.println("==============================");
+            System.out.println("TEXT EMAIL FAILED");
+            System.out.println("==============================");
 
             e.printStackTrace();
-
-
 
             throw new RuntimeException(
                     "Failed to send email",
                     e
             );
-
         }
 
 
