@@ -1,20 +1,30 @@
 package com.example.manikantasales.service;
 
+
+import com.example.manikantasales.entity.Order;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import com.example.manikantasales.entity.Order;
+
+
 @Service
 public class OrderAsyncService {
 
+
     private final EmailService emailService;
 
-    public OrderAsyncService(EmailService emailService) {
+
+    public OrderAsyncService(
+            EmailService emailService
+    ) {
         this.emailService = emailService;
     }
+
+
 
     // =====================================================
     // ORDER PLACE EMAIL
     // =====================================================
+
 
     @Async
     public void sendOrderEmails(
@@ -23,28 +33,34 @@ public class OrderAsyncService {
             Long orderId
     ) {
 
+
         System.out.println("=================================");
         System.out.println("ORDER EMAIL STARTED");
         System.out.println("Order ID : " + orderId);
         System.out.println("Customer Email : " + email);
 
+
         try {
+
 
             String subject =
                     "Order Confirmed - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Your order has been placed successfully."
+                    + "Your order has been placed successfully."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -52,31 +68,41 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "ORDER CONFIRMATION EMAIL SENT SUCCESSFULLY"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "ORDER CONFIRMATION EMAIL FAILED"
             );
 
+
             e.printStackTrace();
+
         }
+
+
 
         System.out.println(
                 "ORDER EMAIL PROCESS COMPLETED"
         );
 
+
         System.out.println(
                 "================================="
         );
-    }
 
+    }
     // =====================================================
     // ORDER CANCEL EMAIL
     // =====================================================
+
 
     @Async
     public void sendOrderCancellationEmail(
@@ -85,23 +111,28 @@ public class OrderAsyncService {
             Long orderId
     ) {
 
+
         try {
+
 
             String subject =
                     "Order Cancelled - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Your order has been cancelled."
+                    + "Your order has been cancelled."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -109,23 +140,34 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "ORDER CANCELLATION EMAIL SENT"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "ORDER CANCELLATION EMAIL FAILED"
             );
 
+
             e.printStackTrace();
+
         }
+
     }
+
+
+
 
     // =====================================================
     // RETURN REQUEST EMAIL
     // =====================================================
+
 
     @Async
     public void sendReturnRequestEmail(
@@ -135,31 +177,36 @@ public class OrderAsyncService {
             String returnReason
     ) {
 
+
         try {
+
 
             String subject =
                     "Return Request Received - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Your return request has been received."
+                    + "Your return request has been received."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\nReturn Reason : "
-                            + returnReason
+                    + "\nReturn Reason : "
+                    + returnReason
 
-                            + "\nReturn Status : REQUESTED"
+                    + "\nReturn Status : REQUESTED"
 
-                            + "\n\nOur team will review your "
-                            + "return request shortly."
+                    + "\n\nOur team will review your "
+                    + "return request shortly."
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -167,23 +214,35 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "RETURN REQUEST EMAIL SENT"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "RETURN REQUEST EMAIL FAILED"
             );
 
+
             e.printStackTrace();
+
         }
+
     }
+
+
+
+
 
     // =====================================================
     // RETURN APPROVED EMAIL
     // =====================================================
+
 
     @Async
     public void sendReturnApprovedEmail(
@@ -194,34 +253,39 @@ public class OrderAsyncService {
             String returnStatus
     ) {
 
+
         try {
+
 
             String subject =
                     "Return Approved - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Good news! Your return request "
-                            + "has been approved."
+                    + "Good news! Your return request "
+                    + "has been approved."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\nOrder Amount : ₹"
-                            + amount
+                    + "\nOrder Amount : ₹"
+                    + amount
 
-                            + "\nReturn Status : "
-                            + returnStatus
+                    + "\nReturn Status : "
+                    + returnStatus
 
-                            + "\n\nPlease follow the return "
-                            + "instructions provided by "
-                            + "Manikanta Sales."
+                    + "\n\nPlease follow the return "
+                    + "instructions provided by "
+                    + "Manikanta Sales."
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -229,23 +293,30 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "RETURN APPROVED EMAIL SENT"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "RETURN APPROVED EMAIL FAILED"
             );
 
-            e.printStackTrace();
-        }
-    }
 
+            e.printStackTrace();
+
+        }
+
+    }
     // =====================================================
     // RETURN REJECTED EMAIL
     // =====================================================
+
 
     @Async
     public void sendReturnRejectedEmail(
@@ -256,33 +327,38 @@ public class OrderAsyncService {
             String returnStatus
     ) {
 
+
         try {
+
 
             String subject =
                     "Return Request Update - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "We are sorry, but your return request "
-                            + "could not be approved."
+                    + "We are sorry, but your return request "
+                    + "could not be approved."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\nOrder Amount : ₹"
-                            + amount
+                    + "\nOrder Amount : ₹"
+                    + amount
 
-                            + "\nReturn Status : "
-                            + returnStatus
+                    + "\nReturn Status : "
+                    + returnStatus
 
-                            + "\n\nIf you have any questions, "
-                            + "please contact Manikanta Sales support."
+                    + "\n\nIf you have any questions, "
+                    + "please contact Manikanta Sales support."
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -290,23 +366,35 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "RETURN REJECTED EMAIL SENT"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "RETURN REJECTED EMAIL FAILED"
             );
 
+
             e.printStackTrace();
+
         }
+
     }
+
+
+
+
 
     // =====================================================
     // RETURN COMPLETED EMAIL
     // =====================================================
+
 
     @Async
     public void sendReturnCompletedEmail(
@@ -317,30 +405,35 @@ public class OrderAsyncService {
             String returnStatus
     ) {
 
+
         try {
+
 
             String subject =
                     "Return Completed - Manikanta Sales";
 
+
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Your product return has been "
-                            + "completed successfully."
+                    + "Your product return has been "
+                    + "completed successfully."
 
-                            + "\n\nOrder ID : "
-                            + orderId
+                    + "\n\nOrder ID : "
+                    + orderId
 
-                            + "\nOrder Amount : ₹"
-                            + amount
+                    + "\nOrder Amount : ₹"
+                    + amount
 
-                            + "\nReturn Status : "
-                            + returnStatus
+                    + "\nReturn Status : "
+                    + returnStatus
 
-                            + "\n\nThank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "\n\nThank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -348,23 +441,30 @@ public class OrderAsyncService {
                     body
             );
 
+
             System.out.println(
                     "RETURN COMPLETED EMAIL SENT"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "RETURN COMPLETED EMAIL FAILED"
             );
 
-            e.printStackTrace();
-        }
-    }
 
+            e.printStackTrace();
+
+        }
+
+    }
     // =====================================================
     // ORDER STATUS UPDATE EMAIL
     // =====================================================
+
 
     @Async
     public void sendOrderStatusEmail(
@@ -374,32 +474,39 @@ public class OrderAsyncService {
             String orderStatus
     ) {
 
+
         System.out.println("=================================");
         System.out.println("ORDER STATUS EMAIL STARTED");
         System.out.println("Order ID : " + orderId);
         System.out.println("Customer Email : " + email);
 
+
+
         try {
 
+
             String subject =
-                    "Order Status Updated - Order #"
-                            + orderId;
+                    "Order Status Updated - Order #" + orderId;
+
+
 
             String body =
                     "Hello "
-                            + firstName
-                            + ",\n\n"
+                    + firstName
+                    + ",\n\n"
 
-                            + "Your order "
-                            + orderId
+                    + "Your order "
+                    + orderId
 
-                            + " status has been updated to "
-                            + orderStatus
+                    + " status has been updated to "
+                    + orderStatus
 
-                            + ".\n\n"
+                    + ".\n\n"
 
-                            + "Thank you for shopping "
-                            + "with Manikanta Sales.";
+                    + "Thank you for shopping "
+                    + "with Manikanta Sales.";
+
+
 
             emailService.sendEmail(
                     email,
@@ -407,51 +514,91 @@ public class OrderAsyncService {
                     body
             );
 
+
+
             System.out.println(
                     "ORDER STATUS EMAIL SENT SUCCESSFULLY"
             );
 
-        } catch (Exception e) {
+
+
+        } catch(Exception e) {
+
 
             System.out.println(
                     "ORDER STATUS EMAIL FAILED"
             );
 
+
             e.printStackTrace();
+
         }
+
+
 
         System.out.println(
                 "================================="
         );
+
     }
- // =====================================================
- // ORDER HTML CONFIRMATION EMAIL
- // =====================================================
 
- @Async
- public void sendOrderConfirmationEmail(Order order) {
 
-     System.out.println("=================================");
-     System.out.println("ORDER HTML EMAIL STARTED");
-     System.out.println("Order ID : " + order.getId());
 
-     try {
 
-         emailService.sendOrderConfirmationEmail(order);
 
-         System.out.println(
-             "ORDER HTML EMAIL SENT SUCCESSFULLY"
-         );
+    // =====================================================
+    // ORDER HTML CONFIRMATION EMAIL
+    // =====================================================
 
-     } catch(Exception e) {
 
-         System.out.println(
-             "ORDER HTML EMAIL FAILED"
-         );
+    @Async
+    public void sendOrderConfirmationEmail(
+            Order order
+    ) {
 
-         e.printStackTrace();
-     }
 
-     System.out.println("=================================");
- }
+        System.out.println("=================================");
+        System.out.println("ORDER HTML EMAIL STARTED");
+        System.out.println(
+                "Order ID : " + order.getId()
+        );
+
+
+
+        try {
+
+
+            emailService.sendOrderConfirmationEmail(
+                    order
+            );
+
+
+
+            System.out.println(
+                    "ORDER HTML EMAIL SENT SUCCESSFULLY"
+            );
+
+
+
+        } catch(Exception e) {
+
+
+            System.out.println(
+                    "ORDER HTML EMAIL FAILED"
+            );
+
+
+            e.printStackTrace();
+
+        }
+
+
+
+        System.out.println(
+                "================================="
+        );
+
+    }
+
+
 }

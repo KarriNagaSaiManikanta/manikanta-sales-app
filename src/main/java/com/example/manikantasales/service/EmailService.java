@@ -1,8 +1,11 @@
 package com.example.manikantasales.service;
 
+
 import com.example.manikantasales.entity.Order;
 
+
 public interface EmailService {
+
 
     // =====================================
     // COMMON EMAIL
@@ -15,6 +18,7 @@ public interface EmailService {
     );
 
 
+
     // =====================================
     // OTP EMAIL
     // =====================================
@@ -23,6 +27,7 @@ public interface EmailService {
             String email,
             String otp
     );
+
 
 
     // =====================================
@@ -35,6 +40,7 @@ public interface EmailService {
     );
 
 
+
     // =====================================
     // FORGOT PASSWORD OTP
     // =====================================
@@ -43,6 +49,7 @@ public interface EmailService {
             String email,
             String otp
     );
+
 
 
     // =====================================
@@ -54,6 +61,7 @@ public interface EmailService {
     );
 
 
+
     // =====================================
     // ORDER CANCELLATION EMAIL
     // =====================================
@@ -63,6 +71,7 @@ public interface EmailService {
     );
 
 
+
     // =====================================
     // RETURN REQUEST EMAIL
     // =====================================
@@ -70,4 +79,45 @@ public interface EmailService {
     void sendReturnRequestEmail(
             Order order
     );
+
+
+
+    // =====================================
+    // ORDER STATUS UPDATE EMAIL
+    // =====================================
+
+    void sendOrderStatusEmail(
+            Order order
+    );
+
+
+
+    // =====================================
+    // RETURN APPROVED EMAIL
+    // =====================================
+
+    void sendReturnApprovedEmail(
+            Order order
+    );
+
+
+
+    // =====================================
+    // RETURN REJECTED EMAIL
+    // =====================================
+
+    void sendReturnRejectedEmail(
+            Order order
+    );
+
+
+
+    // =====================================
+    // RETURN COMPLETED EMAIL
+    // =====================================
+
+    void sendReturnCompletedEmail(
+            Order order
+    );
+
 }
