@@ -1154,55 +1154,44 @@ public class MailServiceImpl implements EmailService {
             System.out.println("TO : " + to);
             System.out.println("SUBJECT : " + subject);
 
+            System.out.println("MAIL_USERNAME = " + System.getenv("MAIL_USERNAME"));
+            System.out.println("MAIL_PASSWORD = " + System.getenv("MAIL_PASSWORD"));
+
             MimeMessage message =
                     mailSender.createMimeMessage();
 
             MimeMessageHelper helper =
                     new MimeMessageHelper(
                             message,
-                            true
+                            true,
+                            "UTF-8"
                     );
+
+            // ADD THIS
+            helper.setFrom(System.getenv("MAIL_USERNAME"));
 
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setText(
-                    html,
-                    true
-            );
+            helper.setText(html, true);
+
+            System.out.println("BEFORE mailSender.send()");
 
             mailSender.send(message);
 
-            System.out.println(
-                    "HTML EMAIL SENT SUCCESSFULLY"
-            );
-
-            System.out.println(
-                    "================================="
-            );
+            System.out.println("AFTER mailSender.send()");
+            System.out.println("HTML EMAIL SENT SUCCESSFULLY");
+            System.out.println("=================================");
 
         } catch (MessagingException e) {
 
-            System.out.println(
-                    "================================="
-            );
-
-            System.out.println(
-                    "HTML EMAIL FAILED"
-            );
-
-            System.out.println(
-                    "TO : " + to
-            );
-
-            System.out.println(
-                    "SUBJECT : " + subject
-            );
+            System.out.println("=================================");
+            System.out.println("HTML EMAIL FAILED");
+            System.out.println("TO : " + to);
+            System.out.println("SUBJECT : " + subject);
 
             e.printStackTrace();
 
-            System.out.println(
-                    "================================="
-            );
+            System.out.println("=================================");
 
             throw new RuntimeException(
                     "HTML email sending failed",
@@ -1211,27 +1200,14 @@ public class MailServiceImpl implements EmailService {
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "================================="
-            );
-
-            System.out.println(
-                    "EMAIL SENDING FAILED"
-            );
-
-            System.out.println(
-                    "TO : " + to
-            );
-
-            System.out.println(
-                    "SUBJECT : " + subject
-            );
+            System.out.println("=================================");
+            System.out.println("EMAIL SENDING FAILED");
+            System.out.println("TO : " + to);
+            System.out.println("SUBJECT : " + subject);
 
             e.printStackTrace();
 
-            System.out.println(
-                    "================================="
-            );
+            System.out.println("=================================");
 
             throw new RuntimeException(
                     "Email sending failed",
