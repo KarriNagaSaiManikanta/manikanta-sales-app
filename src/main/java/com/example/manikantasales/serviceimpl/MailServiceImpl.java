@@ -40,9 +40,7 @@ public class MailServiceImpl implements EmailService {
             String body
     ) {
 
-
         try {
-
 
             System.out.println("=================================");
             System.out.println("TEXT EMAIL SENDING");
@@ -50,37 +48,21 @@ public class MailServiceImpl implements EmailService {
             System.out.println("TO : " + to);
             System.out.println("SUBJECT : " + subject);
 
-
             System.out.println(
-                    "MAIL_USERNAME = "
+                    "MAIL_USERNAME = " 
                     + System.getenv("MAIL_USERNAME")
             );
-
-
-            
-
 
 
             SimpleMailMessage message =
                     new SimpleMailMessage();
 
 
-
             message.setTo(to);
-
-
-
-            message.setFrom(
-                    System.getenv("MAIL_USERNAME")
-            );
-
-
 
             message.setSubject(subject);
 
-
             message.setText(body);
-
 
 
             System.out.println(
@@ -88,9 +70,7 @@ public class MailServiceImpl implements EmailService {
             );
 
 
-
             mailSender.send(message);
-
 
 
             System.out.println(
@@ -102,26 +82,34 @@ public class MailServiceImpl implements EmailService {
                     "TEXT EMAIL SENT SUCCESSFULLY"
             );
 
-
             System.out.println("=================================");
 
 
+        } catch(Exception e) {
 
-        }
-        catch(Exception e){
 
-            System.out.println("==============================");
-            System.out.println("TEXT EMAIL FAILED");
-            System.out.println("==============================");
+            System.out.println(
+                    "=============================="
+            );
+
+            System.out.println(
+                    "TEXT EMAIL FAILED"
+            );
+
+            System.out.println(
+                    "=============================="
+            );
+
 
             e.printStackTrace();
+
 
             throw new RuntimeException(
                     "Failed to send email",
                     e
             );
-        }
 
+        }
 
     }
     // =====================================================
