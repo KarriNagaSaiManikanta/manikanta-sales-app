@@ -321,8 +321,8 @@ public class AuthServiceImpl implements AuthService {
      // Welcome Mail
 
      emailService.sendWelcomeEmail(
-    	        user.getEmail(),
-    	        user.getFirstName()
+    		 user.getEmail(),
+    		 user.getFirstName()
     	);
 
 
@@ -445,33 +445,38 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String forgotPassword(ForgotPasswordRequest request){
 
+        try {
+            Optional<User> user =
+                    userRepository.findByEmail(
+                            request.getEmail()
+                    );
 
-        Optional<User> user =
-                userRepository.findByEmail(
-                        request.getEmail()
-                );
+
+            if(user.isEmpty()){
+
+                return "Email not registered";
+
+            }
 
 
-        if(user.isEmpty()){
 
-            return "Email not registered";
+            String otp =
+                    otpService.generateOtp();
 
+
+
+            otpService.sendForgotPasswordOtp(
+                    request.getEmail(),
+                    otp
+            );
+
+
+            return "OTP Sent Successfully";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: " + e.getMessage();
         }
-
-
-
-        String otp =
-                otpService.generateOtp();
-
-
-
-        otpService.sendForgotPasswordOtp(
-                request.getEmail(),
-                otp
-        );
-
-
-        return "OTP Sent Successfully";
 
     }
 

@@ -161,31 +161,21 @@ profile.email || "No email";
 
 
 // IMAGE
-
 let image =
 document.getElementById(
 "userProfileImage"
 );
 
-
-
 if(image && profile.profileImage){
 
+    let profileImg = profile.profileImage;
 
-image.src =
+    // Clean up old localhost reference from database records
+    if(profileImg.includes("localhost:8080")){
+        profileImg = profileImg.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+    }
 
-profile.profileImage.startsWith("http")
-
-?
-
-profile.profileImage
-
-:
-
-profile.profileImage;
-
-
-
+    image.src = profileImg.trim() !== "" ? profileImg : "/images/user.png";
 }
 
 
@@ -387,23 +377,16 @@ products.forEach(product=>{
 
 let image="/images/product.png";
 
-
-
 if(product.image){
 
+    let prodImg = product.image;
 
-image =
+    // Clean up old localhost reference from database records
+    if(prodImg.includes("localhost:8080")){
+        prodImg = prodImg.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+    }
 
-product.image.startsWith("http")
-
-?
-
-product.image
-
-:
-
-product.image;
-
+    image = prodImg.trim() !== "" ? prodImg : "/images/product.png";
 
 }
 
@@ -418,7 +401,7 @@ container.innerHTML +=`
 
 <div class="product-image">
 
-<img src="${image}">
+<img src="${image}" onerror="this.onerror=null; this.src='/images/product.png';">
 
 </div>
 
@@ -905,4 +888,3 @@ window.location.href="/login.html";
 
 
 }
-

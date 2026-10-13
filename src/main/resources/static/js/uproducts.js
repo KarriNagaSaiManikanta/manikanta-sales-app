@@ -120,9 +120,16 @@ function displayProducts(products) {
 
     products.forEach(product => {
 
+        let imgUrl = product.image;
+
+        // Clean up old localhost reference from database records
+        if (imgUrl && imgUrl.includes("localhost:8080")) {
+            imgUrl = imgUrl.replace("http://localhost:8080", "").replace("https://localhost:8080", "");
+        }
+
         const image =
-            product.image
-                ? product.image
+            imgUrl && imgUrl.trim() !== ""
+                ? imgUrl
                 : "/images/no-image.png";
 
 
@@ -140,7 +147,7 @@ function displayProducts(products) {
 
                     <img
                         src="${image}"
-                        onerror="this.src='/images/no-image.png'"
+                        onerror="this.onerror=null; this.src='/images/no-image.png'"
                     >
 
                 </div>
