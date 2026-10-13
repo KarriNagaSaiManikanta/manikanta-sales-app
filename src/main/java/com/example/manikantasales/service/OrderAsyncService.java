@@ -2,7 +2,7 @@ package com.example.manikantasales.service;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
+import com.example.manikantasales.entity.Order;
 @Service
 public class OrderAsyncService {
 
@@ -424,4 +424,34 @@ public class OrderAsyncService {
                 "================================="
         );
     }
+ // =====================================================
+ // ORDER HTML CONFIRMATION EMAIL
+ // =====================================================
+
+ @Async
+ public void sendOrderConfirmationEmail(Order order) {
+
+     System.out.println("=================================");
+     System.out.println("ORDER HTML EMAIL STARTED");
+     System.out.println("Order ID : " + order.getId());
+
+     try {
+
+         emailService.sendOrderConfirmationEmail(order);
+
+         System.out.println(
+             "ORDER HTML EMAIL SENT SUCCESSFULLY"
+         );
+
+     } catch(Exception e) {
+
+         System.out.println(
+             "ORDER HTML EMAIL FAILED"
+         );
+
+         e.printStackTrace();
+     }
+
+     System.out.println("=================================");
+ }
 }

@@ -331,10 +331,8 @@ public class OrderServiceImpl implements OrderService {
         // SEND ORDER EMAIL ASYNC
         // -------------------------------------------------
 
-        orderAsyncService.sendOrderEmails(
-                email,
-                firstName,
-                orderId
+        orderAsyncService.sendOrderConfirmationEmail(
+                savedOrder
         );
 
         // -------------------------------------------------
