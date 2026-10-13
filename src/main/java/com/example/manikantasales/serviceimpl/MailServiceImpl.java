@@ -40,9 +40,17 @@ public class MailServiceImpl implements EmailService {
             System.out.println("TO : " + to);
             System.out.println("SUBJECT : " + subject);
 
+            // ADD THESE TWO LINES
+            System.out.println("MAIL_USERNAME = " + System.getenv("MAIL_USERNAME"));
+            System.out.println("MAIL_PASSWORD = " + System.getenv("MAIL_PASSWORD"));
+
             SimpleMailMessage message = new SimpleMailMessage();
 
             message.setTo(to);
+
+            // Optional but recommended
+            message.setFrom(System.getenv("MAIL_USERNAME"));
+
             message.setSubject(subject);
             message.setText(body);
 
@@ -71,7 +79,6 @@ public class MailServiceImpl implements EmailService {
             );
         }
     }
-
     // =====================================================
     // OTP EMAIL
     // =====================================================
