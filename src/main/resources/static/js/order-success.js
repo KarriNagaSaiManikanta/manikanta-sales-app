@@ -15,7 +15,7 @@ const token = localStorage.getItem("token");
 
 document.addEventListener(
     "DOMContentLoaded",
-    ()=>{
+    () => {
 
 
         if(!token){
@@ -39,7 +39,6 @@ document.addEventListener(
         loadOrderDetails();
 
 
-
     }
 
 );
@@ -53,7 +52,6 @@ document.addEventListener(
 // =====================================
 // GET ORDER ID FROM URL
 // =====================================
-
 
 function getOrderId(){
 
@@ -82,9 +80,7 @@ function getOrderId(){
 // LOAD ORDER DETAILS
 // =====================================
 
-
 function loadOrderDetails(){
-
 
 
     const orderId =
@@ -116,10 +112,9 @@ function loadOrderDetails(){
 
 
 
-
     fetch(
 
-        "/api/orders/"+orderId,
+        "/api/orders/success/"+orderId,
 
         {
 
@@ -153,12 +148,16 @@ function loadOrderDetails(){
 
 
             return response.text()
+
             .then(message=>{
 
 
                 throw new Error(
+
                     message ||
+
                     "Order not found"
+
                 );
 
 
@@ -187,20 +186,23 @@ function loadOrderDetails(){
     .then(order=>{
 
 
-
         console.log(
+
             "Order Details:",
+
             order
+
         );
 
 
 
 
 
-		document.getElementById(
-		    "orderId"
-		).innerText =
-		"#" + order.id;
+        document.getElementById(
+            "orderId"
+        ).innerText =
+
+        "#" + order.id;
 
 
 
@@ -213,7 +215,7 @@ function loadOrderDetails(){
             "amount"
         ).innerText =
 
-        "₹"+order.amount;
+        "₹" + order.amount;
 
 
 
@@ -251,15 +253,21 @@ function loadOrderDetails(){
         // PAYMENT METHOD
 
         const paymentMethod =
+
         document.getElementById(
             "paymentMethod"
         );
 
 
+
+
         if(paymentMethod){
 
+
             paymentMethod.innerText =
+
             order.paymentMethod;
+
 
         }
 
@@ -280,18 +288,23 @@ function loadOrderDetails(){
 
 
 
-
     .catch(error=>{
 
 
         console.error(
+
             "Error:",
+
             error
+
         );
 
 
+
         alert(
+
             "Unable to load order details"
+
         );
 
 
